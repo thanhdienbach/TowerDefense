@@ -23,7 +23,6 @@ public class MainHall : UnitBase
         attack = GetComponent<Attack>();
         myHealth.Init(mainHallConfig);
         attack.Init(mainHallConfig);
-        Debug.Log("Inited MainHall");
     }
     void Start()
     {

@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     public float panSpeed = 5.0f; // Tốc độ kéo
     public float zoomSpeed = 0.5f; // Tốc độ zoom
     public float minZoom = 10f; // Giới hạn zoom gần
-    public float maxZoom = 20f; // Giới hạn zoom xa
+    public float maxZoom = 30f; // Giới hạn zoom xa
     public float newY;
 
     void Start()

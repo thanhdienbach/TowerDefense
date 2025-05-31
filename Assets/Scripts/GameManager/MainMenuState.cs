@@ -10,8 +10,7 @@ public class MainMenuState : GameState
     }
     public override void Update()
     {
-        base.Update();
-        Debug.Log("TesstMainMenu");
+        
     }
     public override void Exit()
     {

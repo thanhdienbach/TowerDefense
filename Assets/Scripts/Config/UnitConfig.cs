@@ -8,4 +8,5 @@ public class UnitConfig : ScriptableObject
     public float maxHP;
     public float damage;
     public float speed;
+    public float rarity;
 }

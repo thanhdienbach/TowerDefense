@@ -10,7 +10,6 @@ public class Health : MonoBehaviour
     {
         maxHealth = config.maxHP;
         curentHealth = maxHealth;
-        Debug.Log("Inited Healt");
     }
     void Start()
     {

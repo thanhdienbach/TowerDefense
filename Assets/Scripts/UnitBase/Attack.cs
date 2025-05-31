@@ -11,7 +11,6 @@ public class Attack : MonoBehaviour
     public void Init(UnitConfig config)
     {
         damage = config.damage;
-        Debug.Log("Inited attack");
     }
     void Start()
     {
