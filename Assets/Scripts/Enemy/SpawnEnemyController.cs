@@ -9,6 +9,8 @@ public class SpawnEnemyController : MonoBehaviour
     /// Enemy list. It will be spawn in run time
     /// </summary>
     public List<Enemy> enemys = new List<Enemy>();
+    public int maxEnemyNumberEachOtherScene;
+    public int enemySpawned;
 
     [Header("Random time to spawn variable")]
     public float minTime = 2;
@@ -57,7 +59,22 @@ public class SpawnEnemyController : MonoBehaviour
     }
     void Spawner()
     {
-        Instantiate(enemys[RandomEnemy()], transform.position, transform.rotation); // Thêm code để random enemy
+        if (enemySpawned < 2)
+        {
+            Instantiate(enemys[enemys.Count - 1], transform.position, transform.rotation);
+            enemySpawned += 1;
+        }
+        else if (enemySpawned < maxEnemyNumberEachOtherScene)
+        {
+            Instantiate(enemys[RandomEnemy()], transform.position, transform.rotation);
+            enemySpawned += 1;
+        }
+        else
+        {
+            Instantiate(enemys[0], transform.position, transform.rotation);
+            timer.SetDeley(float.MaxValue);
+        }
+        
     }
     int RandomEnemy()
     {

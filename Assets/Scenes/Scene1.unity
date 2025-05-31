@@ -1561,6 +1561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemys: []
+  maxEnemyNumberEachOtherScene: 10
+  enemySpawned: 0
   minTime: 2
   maxTime: 10
   randomTime: 0

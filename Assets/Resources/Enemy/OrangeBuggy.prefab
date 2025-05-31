@@ -101,7 +101,7 @@ MonoBehaviour:
   enemyConfig: {fileID: 11400000, guid: 52ab155f3fb5d4f42a7c3884b0cee36b, type: 2}
   agent: {fileID: 0}
   destination: {fileID: 0}
-  rarity: 30
+  rarity: 35
 --- !u!114 &-805840507882124910
 MonoBehaviour:
   m_ObjectHideFlags: 0
