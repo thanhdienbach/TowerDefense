@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossTank_Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
+      propertyPath: m_TagString
+      value: GroundEnemies
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38.81982
@@ -102,6 +110,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   destination: {fileID: 0}
   rarity: 0
+  distance: 0
 --- !u!114 &7916975112681170727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +153,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 5
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

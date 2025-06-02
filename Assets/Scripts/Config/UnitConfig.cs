@@ -7,6 +7,9 @@ public class UnitConfig : ScriptableObject
 {
     public float maxHP;
     public float damage;
+    public float attackRange;
+    public float detectRange;
     public float speed;
     public float rarity;
+    public bool isNeedUpdateTargetPosition;
 }

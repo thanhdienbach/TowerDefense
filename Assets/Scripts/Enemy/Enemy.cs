@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,19 +10,28 @@ public class Enemy : UnitBase
     public NavMeshAgent agent;
     public Transform destination;
     public float rarity;
+    public float distance;
+    public DeleyTimer timer;
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        destination = MainHall.instance.transform;
+        EnemyAI();
+
         myHealth = GetComponent<Health>();
         attack = GetComponent<Attack>();
         myHealth.Init(enemyConfig);
         attack.Init(enemyConfig);
-        agent = GetComponent<NavMeshAgent>();
-        destination = MainHall.instance.transform;
         rarity = enemyConfig.rarity;
-        agent.speed = enemyConfig.speed; // Có nên dùng như vậy không hay sẽ dùng luôn speed của navmeshagent
+        agent.speed = enemyConfig.speed;
     }
 
-    void Update()
+    void FindTarget()
+    {
+
+    }
+
+    public void EnemyAI() 
     {
         agent.SetDestination(destination.position);
     }

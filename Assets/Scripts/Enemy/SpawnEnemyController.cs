@@ -25,6 +25,8 @@ public class SpawnEnemyController : MonoBehaviour
     public int indexOfEnemy;
     public float randomNumber;
 
+    public NavmeshController nav;
+
     public void Init()
     {
         Enemy[] loadedEnemy = Resources.LoadAll<Enemy>("Enemy");
@@ -39,6 +41,7 @@ public class SpawnEnemyController : MonoBehaviour
             rarityCumulative += enemys[i].rarity;
             rarityList.Add(rarityCumulative);
         }
+        timer.SetDeley(2);
     }
     void Start()
     {
@@ -59,6 +62,7 @@ public class SpawnEnemyController : MonoBehaviour
     }
     void Spawner()
     {
+        nav.Init();
         if (enemySpawned < 2)
         {
             Instantiate(enemys[enemys.Count - 1], transform.position, transform.rotation);
@@ -66,8 +70,17 @@ public class SpawnEnemyController : MonoBehaviour
         }
         else if (enemySpawned < maxEnemyNumberEachOtherScene)
         {
-            Instantiate(enemys[RandomEnemy()], transform.position, transform.rotation);
-            enemySpawned += 1;
+            RandomEnemy();
+            if (enemys[indexOfEnemy].CompareTag("GroundEnemies"))
+            {
+                Instantiate(enemys[indexOfEnemy], transform.position, transform.rotation);
+                enemySpawned += 1;
+            }
+            else
+            {
+                Instantiate(enemys[indexOfEnemy], transform.position + transform.up * 10, transform.rotation);
+                enemySpawned += 1;
+            }
         }
         else
         {
