@@ -13,6 +13,7 @@ public class SpawnEnemyController : MonoBehaviour
     public int enemySpawned;
 
     [Header("Random time to spawn variable")]
+    public float firstDeleyEnemyTime = 2;
     public float minTime = 2;
     public float maxTime = 10;
     public float randomTime;
@@ -24,8 +25,6 @@ public class SpawnEnemyController : MonoBehaviour
     float rarityCumulative;
     public int indexOfEnemy;
     public float randomNumber;
-
-    public NavmeshController nav;
 
     public void Init()
     {
@@ -41,12 +40,9 @@ public class SpawnEnemyController : MonoBehaviour
             rarityCumulative += enemys[i].rarity;
             rarityList.Add(rarityCumulative);
         }
-        timer.SetDeley(2);
+        timer.SetDeley(firstDeleyEnemyTime);
     }
-    void Start()
-    {
-        
-    }
+
     void Update()
     {
         SpawnEnemyRoutine();
@@ -62,13 +58,12 @@ public class SpawnEnemyController : MonoBehaviour
     }
     void Spawner()
     {
-        nav.Init();
         if (enemySpawned < 2)
         {
             Instantiate(enemys[enemys.Count - 1], transform.position, transform.rotation);
             enemySpawned += 1;
         }
-        else if (enemySpawned < maxEnemyNumberEachOtherScene)
+        else if (enemySpawned < maxEnemyNumberEachOtherScene - 1)
         {
             RandomEnemy();
             if (enemys[indexOfEnemy].CompareTag("GroundEnemies"))
@@ -99,7 +94,6 @@ public class SpawnEnemyController : MonoBehaviour
                 indexOfEnemy = i;
                 break;
             }
-            
         }
         return indexOfEnemy;
     }
