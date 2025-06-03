@@ -10,20 +10,19 @@ public class SpawnBullet : MonoBehaviour
         
     }
 
-    
     void Update()
     {
-        if (timer.IsReady())
-        {
-            GameObject bullet = ObjectBool.sharedInstance.GetPooledObject();
-            if (bullet != null)
-            {
-                bullet.transform.position = transform.position;
-                bullet.transform.rotation = transform.rotation;
-                bullet.SetActive(true);
-            }
-            timer.SetDeley(1);
-        }
+        //if (timer.IsReady())
+        //{
+        //    GameObject bullet = ObjectBool.sharedInstance.GetPooledObject();
+        //    if (bullet != null)
+        //    {
+        //        bullet.transform.position = transform.position;
+        //        bullet.transform.rotation = transform.rotation;
+        //        bullet.SetActive(true);
+        //    }
+        //    timer.SetDeley(1);
+        //}
         
     }
 }

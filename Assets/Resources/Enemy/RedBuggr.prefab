@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6092794944556650066}
+  - component: {fileID: 4450156972481045407}
+  - component: {fileID: 695351099885813729}
   m_Layer: 11
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -31,6 +33,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5246644940507563683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4450156972481045407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340095413376063064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d467ba5cd28e64f9108dff826c2064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponConfig: {fileID: 11400000, guid: f95c3219876d92c489758a597e9b6a87, type: 2}
+  bulletPool: {fileID: 0}
+--- !u!114 &695351099885813729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340095413376063064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5106dd4a29d9a43af3ceb5c82eacd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: []
 --- !u!1001 &5246644940507438115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,12 +185,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHealth: {fileID: 0}
   attack: {fileID: 0}
-  teamID: 0
+  teamID: 5
   enemyConfig: {fileID: 11400000, guid: 79d6585191ed7854aa245bc5cc453e44, type: 2}
+  weaponConfig: {fileID: 11400000, guid: f95c3219876d92c489758a597e9b6a87, type: 2}
   agent: {fileID: 0}
   destination: {fileID: 0}
   rarity: 45
-  distance: 0
 --- !u!114 &-5854395748230281413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b049d0c81b96ef342aa2333d0156ed93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  id: 0
+  weapons: []
+  currentWeapon: {fileID: 0}
 --- !u!195 &-363899167916617204
 NavMeshAgent:
   m_ObjectHideFlags: 0

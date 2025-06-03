@@ -17,12 +17,13 @@ public class MainHall : UnitBase
     #endregion
 
     public UnitConfig mainHallConfig;
+    public WeaponConfig weaponConfig;
     public void Init()
     {
         myHealth = GetComponent<Health>();
         attack = GetComponent<Attack>();
         myHealth.Init(mainHallConfig);
-        attack.Init(mainHallConfig);
+        attack.Init(weaponConfig);
     }
     void Start()
     {

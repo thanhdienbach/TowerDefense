@@ -447,6 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputForCamera: {fileID: 0}
   cameraConfig: {fileID: 11400000, guid: a22b83655c7434b4db412ec6f61bbc9a, type: 2}
+  delta: {x: 0, y: 0}
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,9 +461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1927499674}
-  touchX: 0
-  touchY: 0
   touchCount: 0
+  rightInput: 0
 --- !u!1001 &388716410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -541,7 +541,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 40882b31b14dc3244a05f04da811017d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 71168782495474ac69411fd475ef70e6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 538472043}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 71168782495474ac69411fd475ef70e6,
         type: 3}
@@ -789,6 +793,70 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526970171}
   m_Mesh: {fileID: 4300018, guid: 4a4f98795c1bb4f299e0a3d35e32dc0e, type: 3}
+--- !u!1 &538472042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 538472043}
+  - component: {fileID: 538472045}
+  - component: {fileID: 538472044}
+  m_Layer: 0
+  m_Name: WeaponSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &538472043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538472042}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.58, y: -0.71, z: 1.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1384381236}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &538472044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538472042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5106dd4a29d9a43af3ceb5c82eacd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: []
+--- !u!114 &538472045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538472042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d467ba5cd28e64f9108dff826c2064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponConfig: {fileID: 11400000, guid: ecbaec9fa0fc5d24fb1bfd7a7e8be50e, type: 2}
+  bulletPool: {fileID: 0}
+  attackStep: 0
+  canAttack: 0
+  checkBullet: 0
+  deleyTimer: 0
 --- !u!1 &630133876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,6 +2720,7 @@ MonoBehaviour:
   attack: {fileID: 0}
   teamID: 0
   mainHallConfig: {fileID: 11400000, guid: 2f48c9d4aacfdd0449ad79369856f437, type: 2}
+  weaponConfig: {fileID: 11400000, guid: ecbaec9fa0fc5d24fb1bfd7a7e8be50e, type: 2}
 --- !u!114 &1384381230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2678,8 +2747,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b049d0c81b96ef342aa2333d0156ed93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  id: 0
+  weapons: []
+  currentWeapon: {fileID: 0}
+--- !u!4 &1384381236 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 71168782495474ac69411fd475ef70e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 388716410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472809313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,6 +2802,7 @@ MonoBehaviour:
   enemys: []
   maxEnemyNumberEachOtherScene: 10
   enemySpawned: 0
+  firstDeleyEnemyTime: 2
   minTime: 4
   maxTime: 10
   randomTime: 0
@@ -2734,7 +2810,6 @@ MonoBehaviour:
   rarityList: []
   indexOfEnemy: 0
   randomNumber: 0
-  nav: {fileID: 966720555}
 --- !u!1 &1556365985
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   damage: 1
+  speed: 4
   attackRange: 20
   detectRange: 0
-  speed: 4
-  rarity: 20
   isNeedUpdateTargetPosition: 0
+  rarity: 20
+  teamID: 4
