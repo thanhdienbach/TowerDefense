@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class ObjectBool : MonoBehaviour
 {
     public List<GameObject> pooledObject;
+    public List<Bullet> pooledBullet;
     public void PoolObject(GameObject objectToPool, int amountToPool)
     {
         pooledObject = new List<GameObject>();

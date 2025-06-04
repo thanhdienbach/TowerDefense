@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObject: []
+  pooledBullet: []
 --- !u!1001 &6960422685131948573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,15 +83,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.81982
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.795116
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -102,11 +103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -180,6 +181,7 @@ MonoBehaviour:
   weaponConfig: {fileID: 11400000, guid: 42de23a28e82ed249b9b82fdcf303422, type: 2}
   agent: {fileID: 0}
   destination: {fileID: 0}
+  destinationSet: 0
   rarity: 0
 --- !u!114 &7916975112681170727
 MonoBehaviour:
@@ -230,4 +232,4 @@ NavMeshAgent:
   m_Height: 0.91092134
   m_BaseOffset: 1.2
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1

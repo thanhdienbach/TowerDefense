@@ -17,5 +17,5 @@ MonoBehaviour:
   damage: 5
   amountOfBullet: 20
   bullet: {fileID: 5919220286410709334, guid: 8fa9d55d61de3fe4580b5f8089aefac6, type: 3}
-  attackRate: 4
-  attackStep: 0.5
+  attackRate: 6
+  attackStep: 0.7

@@ -18,4 +18,4 @@ MonoBehaviour:
   amountOfBullet: 20
   bullet: {fileID: 2086261179823682334, guid: c39b5d7f7b6b75547bb114493a13396e, type: 3}
   attackRate: 4
-  attackStep: 1
+  attackStep: 0.7

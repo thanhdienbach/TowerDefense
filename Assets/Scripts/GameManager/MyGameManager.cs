@@ -26,6 +26,6 @@ public class MyGameManager : MonoBehaviour
     {
         maiHall.Init();
         spawnEnemy.Init();
-        navmeshController.Init();
+        // navmeshController.Init();
     }
 }

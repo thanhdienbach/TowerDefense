@@ -30,12 +30,8 @@ public class Attack : MonoBehaviour
         currentWeapon = weapon;
     }
 
-    private void Update()
+    public void Attacking(Weapon weapon)
     {
-         Attacking(currentWeapon);
-    }
-    void Attacking(Weapon weapon)
-    {
-        weapon.ActiveBullet();
+        weapon.ShootBullet();
     }
 }

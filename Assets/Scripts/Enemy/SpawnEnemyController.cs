@@ -66,16 +66,8 @@ public class SpawnEnemyController : MonoBehaviour
         else if (enemySpawned < maxEnemyNumberEachOtherScene - 1)
         {
             RandomEnemy();
-            if (enemys[indexOfEnemy].CompareTag("GroundEnemies"))
-            {
-                Instantiate(enemys[indexOfEnemy], transform.position, transform.rotation);
-                enemySpawned += 1;
-            }
-            else
-            {
-                Instantiate(enemys[indexOfEnemy], transform.position + transform.up * 10, transform.rotation);
-                enemySpawned += 1;
-            }
+            Instantiate(enemys[indexOfEnemy], transform.position, transform.rotation);
+            enemySpawned += 1;
         }
         else
         {

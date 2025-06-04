@@ -18,5 +18,5 @@ MonoBehaviour:
   attackRange: 20
   detectRange: 0
   isNeedUpdateTargetPosition: 0
-  rarity: 20
+  rarity: 1000
   teamID: 4
