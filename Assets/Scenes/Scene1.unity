@@ -2341,10 +2341,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons: []
   currentWeapon: {fileID: 0}
-  conditionTarget: 1
+  conditionTarget: 0
   targetLayer:
     serializedVersion: 2
-    m_Bits: 18432
+    m_Bits: 2048
   detectionRadius: 30
   targetsInRange: []
   bestTarget: {fileID: 0}

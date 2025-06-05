@@ -9,11 +9,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - MainHall
-  - 
+  - Obstacle
   - PlacementLayer
   - PlacementGhosts
   - Towers
@@ -22,7 +22,7 @@ TagManager:
   - EnemyProjectiles
   - FlyingEnemies
   - GroundEnemyTargettingProjectiles
-  - 
+  - BuildingPlace
   - 
   - 
   - 

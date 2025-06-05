@@ -168,7 +168,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: b7d3ea14f798b45309e64cbf222d83ad,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -5766067580944505750}
+      addedObject: {fileID: 3555045926124608403}
   m_SourcePrefab: {fileID: 100100000, guid: b7d3ea14f798b45309e64cbf222d83ad, type: 3}
 --- !u!1 &5246644940507339395 stripped
 GameObject:
@@ -255,8 +255,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
---- !u!135 &-5766067580944505750
-SphereCollider:
+--- !u!64 &3555045926124608403
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -273,9 +273,10 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.8068436
-  m_Center: {x: -0.0005608201, y: 0.9469591, z: 0.2350334}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: b7d3ea14f798b45309e64cbf222d83ad, type: 3}
 --- !u!4 &5246644940507563683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b7d3ea14f798b45309e64cbf222d83ad,
