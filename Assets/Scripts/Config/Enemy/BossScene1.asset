@@ -15,8 +15,8 @@ MonoBehaviour:
   maxHP: 20
   damage: 5
   speed: 3
-  attackRange: 20
-  detectRange: 0
+  attackRange: 40
+  detectRange: 30
   isNeedUpdateTargetPosition: 0
   rarity: 0
   teamID: 6

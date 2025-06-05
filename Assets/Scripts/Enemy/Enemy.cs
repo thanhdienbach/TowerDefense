@@ -54,6 +54,7 @@ public class Enemy : UnitBase
         {
             agent.isStopped = true;
             enemyAttack.Attacking(enemyAttack.currentWeapon);
+            transform.LookAt(destination);
         }
     }
     void SetDestinationOneTime(Transform destination)

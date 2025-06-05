@@ -149,6 +149,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -463654324592953465}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 617480999c0dc45179a0e237b678012d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7986944310431273079}
   m_SourcePrefab: {fileID: 100100000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
 --- !u!4 &6960422685131823261 stripped
 Transform:
@@ -183,6 +187,7 @@ MonoBehaviour:
   destination: {fileID: 0}
   destinationSet: 0
   rarity: 0
+  enemyAttack: {fileID: 0}
 --- !u!114 &7916975112681170727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +216,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons: []
   currentWeapon: {fileID: 0}
+  conditionTarget: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  detectionRadius: 30
+  targetsInRange: []
+  bestTarget: {fileID: 0}
 --- !u!195 &-463654324592953465
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -233,3 +245,24 @@ NavMeshAgent:
   m_BaseOffset: 1.2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
+--- !u!135 &-7986944310431273079
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960422685132047549}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3.120861
+  m_Center: {x: -0.0035721064, y: -0.43862623, z: 0.39722836}

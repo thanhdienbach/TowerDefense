@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
         bulletPool = GetComponent<ObjectBool>();
         bulletPool.PoolObject(weaponConfig.bullet, weaponConfig.amountOfBullet);
     }
-    public void ShootBullet()
+    public void ShootBullet(Transform bestTarget)
     {
         GameObject bullet =  bulletPool.GetPooledObject(bulletPool.pooledObject);
         if (timer.IsReady())
@@ -25,6 +25,12 @@ public class Weapon : MonoBehaviour
                 bullet.SetActive(true);
             }
             timer.SetDeley(weaponConfig.attackStep);
+        }
+        Bullet bl = bullet.GetComponent<Bullet>();
+        if (bl != null)
+        {
+            bl.isMoving = true;
+            bl.bestTarget = bestTarget;
         }
     }
 }

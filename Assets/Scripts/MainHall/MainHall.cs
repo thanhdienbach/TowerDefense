@@ -18,6 +18,7 @@ public class MainHall : UnitBase
 
     public UnitConfig mainHallConfig;
     public WeaponConfig weaponConfig;
+
     public void Init()
     {
         myHealth = GetComponent<Health>();

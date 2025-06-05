@@ -476,6 +476,10 @@ PrefabInstance:
       value: MainHall
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 71168782495474ac69411fd475ef70e6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 71168782495474ac69411fd475ef70e6, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -559,6 +563,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1384381233}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 71168782495474ac69411fd475ef70e6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1384381239}
   m_SourcePrefab: {fileID: 100100000, guid: 71168782495474ac69411fd475ef70e6, type: 3}
 --- !u!1 &410087039
 GameObject:
@@ -689,7 +697,7 @@ GameObject:
   - component: {fileID: 538472043}
   - component: {fileID: 538472045}
   - component: {fileID: 538472044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2333,12 +2341,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons: []
   currentWeapon: {fileID: 0}
+  conditionTarget: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 18432
+  detectionRadius: 30
+  targetsInRange: []
+  bestTarget: {fileID: 0}
 --- !u!4 &1384381236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 71168782495474ac69411fd475ef70e6,
     type: 3}
   m_PrefabInstance: {fileID: 388716410}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &1384381239
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384381220}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.7604705
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1472809313
 GameObject:
   m_ObjectHideFlags: 0
