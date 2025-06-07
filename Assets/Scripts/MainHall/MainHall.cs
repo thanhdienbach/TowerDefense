@@ -18,21 +18,14 @@ public class MainHall : UnitBase
 
     public UnitConfig mainHallConfig;
     public WeaponConfig weaponConfig;
-
+    public PlayingPanle playingPanle;
+    public float energy;
     public void Init()
     {
         myHealth = GetComponent<Health>();
         attack = GetComponent<Attack>();
         myHealth.Init(mainHallConfig);
         attack.Init(weaponConfig);
-    }
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
-    
+    }  
+
 }

@@ -9,8 +9,11 @@ public class SpawnEnemyController : MonoBehaviour
     /// Enemy list. It will be spawn in run time
     /// </summary>
     public List<Enemy> enemys = new List<Enemy>();
-    public int maxEnemyNumberEachOtherScene;
-    public int enemySpawned;
+    public NumberOfEnemy numberOfEnemyConfig;
+    public int curentWave;
+    public bool showedCurentWave;
+    public float numberOfCurrentEnemy;
+    public float numberOfMaxEnemyCurrentWave;
 
     [Header("Random time to spawn variable")]
     public float firstDeleyEnemyTime = 2;
@@ -41,15 +44,18 @@ public class SpawnEnemyController : MonoBehaviour
             rarityList.Add(rarityCumulative);
         }
         timer.SetDeley(firstDeleyEnemyTime);
+        curentWave = 1;
+        numberOfMaxEnemyCurrentWave = numberOfEnemyConfig.enemyInFirstWave;
     }
 
     void Update()
     {
         SpawnEnemyRoutine();
+        ShowWaveInfoToTextUI();
     }
     void SpawnEnemyRoutine()
     {
-        while (timer.IsReady())
+        while (timer.IsReady() && !(curentWave == numberOfEnemyConfig.maxWave && numberOfCurrentEnemy == numberOfMaxEnemyCurrentWave))
         {
             randomTime = Random.Range(minTime, maxTime);
             timer.SetDeley(randomTime);
@@ -58,23 +64,37 @@ public class SpawnEnemyController : MonoBehaviour
     }
     void Spawner()
     {
-        if (enemySpawned < 2)
+        if (numberOfCurrentEnemy < 2)
         {
             Instantiate(enemys[enemys.Count - 1], transform.position, transform.rotation);
-            enemySpawned += 1;
+            numberOfCurrentEnemy += 1;
         }
-        else if (enemySpawned < maxEnemyNumberEachOtherScene - 1)
+        else if (numberOfCurrentEnemy < numberOfEnemyConfig.enemyInFirstWave - 1)
         {
             RandomEnemy();
             Instantiate(enemys[indexOfEnemy], transform.position, transform.rotation);
-            enemySpawned += 1;
+            numberOfCurrentEnemy += 1;
         }
         else
         {
             Instantiate(enemys[0], transform.position, transform.rotation);
+            curentWave += 1;
+            // Add code to caculation numberOfMaxEnemyCurrentWave
             timer.SetDeley(float.MaxValue);
         }
-        
+        ShowCurrentWaveToSliderUI();
+    }
+    void ShowWaveInfoToTextUI()
+    {
+        if (!showedCurentWave)
+        {
+            PlayingPanle.instance.curentWaveInfo_Text.text = curentWave.ToString() + "/" + numberOfEnemyConfig.maxWave;
+            showedCurentWave = !showedCurentWave;
+        }
+    }
+    void ShowCurrentWaveToSliderUI()
+    {
+        PlayingPanle.instance.curentWaveProcessInfo_Slider.value = (numberOfCurrentEnemy / numberOfMaxEnemyCurrentWave);
     }
     int RandomEnemy()
     {

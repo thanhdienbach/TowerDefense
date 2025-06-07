@@ -7,7 +7,7 @@ public class MyGameManager : MonoBehaviour
 
     public MainHall maiHall;
     public SpawnEnemyController spawnEnemy;
-    public NavmeshController navmeshController;
+    public UIManager uIManager;
     
     void Awake()
     {
@@ -26,6 +26,6 @@ public class MyGameManager : MonoBehaviour
     {
         maiHall.Init();
         spawnEnemy.Init();
-        // navmeshController.Init();
+        uIManager.Init();
     }
 }
