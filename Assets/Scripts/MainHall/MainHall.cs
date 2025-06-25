@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainHall : UnitBase
 {
+
     #region instance
     public static MainHall instance;
     private void OnEnable()
@@ -17,15 +18,16 @@ public class MainHall : UnitBase
     #endregion
 
     public UnitConfig mainHallConfig;
-    public WeaponConfig weaponConfig;
     public PlayingPanle playingPanle;
     public float energy;
     public void Init()
     {
         myHealth = GetComponent<Health>();
         attack = GetComponent<Attack>();
+        teamID = GetComponent<TargetFilterData>();
         myHealth.Init(mainHallConfig);
-        attack.Init(weaponConfig);
+        teamID.Init(mainHallConfig);
+        attack.Init();
     }  
 
 }

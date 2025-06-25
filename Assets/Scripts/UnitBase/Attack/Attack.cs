@@ -5,30 +5,33 @@ using UnityEditor.Animations;
 using UnityEngine;
 
 
-public enum ConditionTarget
-{
-    LowHP,
-    Nearest,
-    NearestMainHall,
-}
-
-
 public class Attack : MonoBehaviour
 {
+    
     public List<Weapon> weapons = new List<Weapon>();
     public Weapon currentWeapon;
+
+    public TypeOfTarget typeOfTarget;
+    public TargetFilterData teamID;
+    public TeamId targetToTeam;
+    public UnitType targetToUnitType;
+    public Transform focusPosition;
 
     public DeleyTimer findNewTargetTimer;
     public ConditionTarget conditionTarget;
     public LayerMask targetLayer;
     public float detectionRadius = 30;
     public Collider[] targetsInRange;
+
     public Transform bestTarget;
 
-    public void Init(WeaponConfig weaponConfig)
+    
+    public void Init()
     {
         LoadAllWeapon();
-        EquipWeapon(weaponConfig);
+        currentWeapon = GetComponentInChildren<Weapon>();
+        teamID = GetComponentInChildren<TargetFilterData>();
+        focusPosition = this.transform;
     }
     void LoadAllWeapon()
     {
@@ -47,15 +50,10 @@ public class Attack : MonoBehaviour
         currentWeapon = weapon;
     }
 
-    
-
-    
-
     void Start()
     {
         conditionTarget = ConditionTarget.Nearest;
     }
-
 
     void Update()
     {
@@ -65,7 +63,7 @@ public class Attack : MonoBehaviour
     {
         if (findNewTargetTimer.IsReady())
         {
-            FindTargetWithCondition(conditionTarget, targetsInRange);
+            FindTargetWithCondition(targetsInRange, conditionTarget);
             findNewTargetTimer.SetDeley(1);
         }
         if (bestTarget != null)
@@ -73,62 +71,173 @@ public class Attack : MonoBehaviour
             weapon.ShootBullet(bestTarget);
         }
     }
-    void FindTargetWithCondition(ConditionTarget conditionTarget, Collider[] targetsInRange)
+    void FindTargetWithCondition(Collider[] targetsInRange, ConditionTarget conditionTarget)
     {
         targetsInRange = Physics.OverlapSphere(transform.position, currentWeapon.weaponConfig.detectRange, targetLayer);
         if (targetsInRange.Length == 0)
         {
             bestTarget = null;
         }
-        switch (conditionTarget)
+        if (typeOfTarget == TypeOfTarget.TypeOfCompetitor)
         {
-            case ConditionTarget.LowHP:
-                FindLowHPTarGet(targetsInRange);
-                break;
-            case ConditionTarget.Nearest:
-                FindNearestTarget(targetsInRange);
-                break;
-            case ConditionTarget.NearestMainHall:
-                FindNearestMainHallTarget(targetsInRange);
-                break;
+            SetTypeOfTargetByUnitType(UnitType.None);
+            switch (conditionTarget)
+            {
+                case ConditionTarget.LowHP:
+                    FindLowHPTarGetByUnitType(targetsInRange, targetToUnitType);
+                    break;
+                case ConditionTarget.Nearest:
+                    FindNearestStructerTargetByUnitType(targetsInRange, targetToUnitType, focusPosition);
+                    break;
+            }
         }
+        else
+        {
+            SetTypeOfTargetByTeam(typeOfTarget);
+            switch (conditionTarget)
+            {
+                case ConditionTarget.LowHP:
+                    FindLowHPTarGetByTeamID(targetsInRange, typeOfTarget);
+                    break;
+                case ConditionTarget.Nearest:
+                    FindNearestStructerTargetByTeamID(targetsInRange, typeOfTarget, focusPosition);
+                    break;
+            }
+        }
+        
     }
-    void FindLowHPTarGet(Collider[] targetsInRange)
+    void FindLowHPTarGetByUnitType(Collider[] targetsInRange, UnitType unitType)
     {
         float lowestHP = Mathf.Infinity;
         foreach (Collider targetInRange in targetsInRange)
         {
             float hp = targetInRange.GetComponent<Health>().curentHealth;
-            if (hp < lowestHP)
+            if (hp < lowestHP && targetInRange.GetComponent<TargetFilterData>().unitType == unitType)
             {
                 lowestHP = hp;
                 bestTarget = targetInRange.transform;
             }
         }
     }
-    void FindNearestTarget(Collider[] targetsInRange)
+    void FindLowHPTarGetByTeamID(Collider[] targetsInRange, TypeOfTarget typeOfTarget)
+    {
+        float lowestHP = Mathf.Infinity;
+        foreach (Collider targetInRange in targetsInRange)
+        {
+            float hp = targetInRange.GetComponent<Health>().curentHealth;
+            if (typeOfTarget == TypeOfTarget.All)
+            {
+                if (hp < lowestHP)
+                {
+                    lowestHP = hp;
+                    bestTarget = targetInRange.transform;
+                }
+            }
+            else if (typeOfTarget == TypeOfTarget.AllCompetitor)
+            {
+                if (hp < lowestHP && targetInRange.GetComponent<TargetFilterData>().teamId == targetToTeam)
+                {
+                    lowestHP = hp;
+                    bestTarget = targetInRange.transform;
+                }
+            }
+        }
+    }
+    //void FindNearestTargetByUnitType(Collider[] targetsInRange, UnitType unitType)
+    //{
+    //    float closestDistance = Mathf.Infinity;
+    //    foreach (Collider targetInRange in targetsInRange)
+    //    {
+    //        float distance = Vector3.Distance(transform.position, targetInRange.transform.position);
+    //        if (distance < closestDistance && targetInRange.GetComponent<TeamID>().unitType == unitType)
+    //        {
+    //            distance = closestDistance;
+    //            bestTarget = targetInRange.transform;
+    //        }
+    //    }
+    //}
+    //void FindNearestTargetByTeam(Collider[] targetsInRange, TypeOfTarget typeOfTarget)
+    //{
+    //    float closestDistance = Mathf.Infinity;
+    //    foreach (Collider targetInRange in targetsInRange)
+    //    {
+    //        float distance = Vector3.Distance(transform.position, targetInRange.transform.position);
+    //        if (typeOfTarget == TypeOfTarget.All)
+    //        {
+    //            //
+    //            if (distance < closestDistance)
+    //            {
+    //                distance = closestDistance;
+    //                bestTarget = targetInRange.transform;
+    //            }
+    //        }
+    //        else if (typeOfTarget == TypeOfTarget.AllCompetitor)
+    //        {
+    //            //
+    //            if (distance < closestDistance && targetInRange.GetComponent<TeamID>().team == targetToTeam)
+    //            {
+    //                distance = closestDistance;
+    //                bestTarget = targetInRange.transform;
+    //            }
+    //        }
+    //    }
+    //}
+    void FindNearestStructerTargetByUnitType(Collider[] targetsInRange, UnitType targetUnitType, Transform transform)
     {
         float closestDistance = Mathf.Infinity;
         foreach (Collider targetInRange in targetsInRange)
         {
             float distance = Vector3.Distance(transform.position, targetInRange.transform.position);
-            if (distance < closestDistance)
+            if (distance < closestDistance && targetInRange.GetComponent<TargetFilterData>().unitType == targetUnitType)
             {
                 closestDistance = distance;
                 bestTarget = targetInRange.transform;
             }
         }
     }
-    void FindNearestMainHallTarget(Collider[] targetsInRange)
+    void FindNearestStructerTargetByTeamID(Collider[] targetsInRange, TypeOfTarget typeOfTarget, Transform transform)
     {
         float closestDistance = Mathf.Infinity;
         foreach (Collider targetInRange in targetsInRange)
         {
-            float distance = Vector3.Distance(MainHall.instance.transform.position, targetInRange.transform.position);
-            if (distance < closestDistance)
+            float distance = Vector3.Distance(transform.position, targetInRange.transform.position);
+            if (typeOfTarget == TypeOfTarget.All)
             {
-                closestDistance = distance;
-                bestTarget = targetInRange.transform;
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    bestTarget = targetInRange.transform;
+                }
+            }
+            else if (typeOfTarget == TypeOfTarget.AllCompetitor)
+            {
+                if (distance < closestDistance && targetInRange.GetComponent<TargetFilterData>().teamId == targetToTeam)
+                {
+                    closestDistance = distance;
+                    bestTarget = targetInRange.transform;
+                }
+            }
+        }
+    }
+    void SetTypeOfTargetByUnitType(UnitType unitType)
+    {
+         targetToUnitType = unitType;
+    }
+    void SetTypeOfTargetByTeam(TypeOfTarget typeOfTarget)
+    {
+        if (typeOfTarget == TypeOfTarget.All)
+        {
+            targetToTeam = TeamId.All;
+        }
+        else if (typeOfTarget == TypeOfTarget.AllCompetitor)
+        {
+            if (teamID.teamId == TeamId.Player)
+            {
+                targetToTeam = TeamId.Enemy;
+            }
+            else if (teamID.teamId == TeamId.Enemy)
+            {
+                targetToTeam = TeamId.Player;
             }
         }
     }

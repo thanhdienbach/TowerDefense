@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7676974415058791639}
   - component: {fileID: 3082532858940062128}
   - component: {fileID: 5407618551662945353}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: WeaponSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b7d3ea14f798b45309e64cbf222d83ad, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b7d3ea14f798b45309e64cbf222d83ad, type: 3}
       propertyPath: m_TagString
@@ -148,6 +148,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: b7d3ea14f798b45309e64cbf222d83ad,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 9075290370720128825}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: b7d3ea14f798b45309e64cbf222d83ad,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: -1252497220334016032}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: b7d3ea14f798b45309e64cbf222d83ad,
         type: 3}
@@ -174,14 +178,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHealth: {fileID: 0}
   attack: {fileID: 0}
-  teamID: 5
+  teamID: {fileID: 0}
   enemyConfig: {fileID: 11400000, guid: 52ab155f3fb5d4f42a7c3884b0cee36b, type: 2}
-  weaponConfig: {fileID: 11400000, guid: f95c3219876d92c489758a597e9b6a87, type: 2}
   agent: {fileID: 0}
   destination: {fileID: 0}
   destinationSet: 0
   rarity: 35
-  enemyAttack: {fileID: 0}
 --- !u!114 &-805840507882124910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,13 +212,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons: []
   currentWeapon: {fileID: 0}
+  typeOfTarget: 1
+  teamID: {fileID: 0}
+  targetToTeam: 0
+  targetToUnitType: 0
+  focusPosition: {fileID: 0}
   conditionTarget: 1
   targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 524288
   detectionRadius: 30
   targetsInRange: []
   bestTarget: {fileID: 0}
+--- !u!114 &9075290370720128825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361017159647678971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450cfbd60c221e840bacd6702cae6fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamId: 1
+  unitType: 6
 --- !u!195 &-1252497220334016032
 NavMeshAgent:
   m_ObjectHideFlags: 0

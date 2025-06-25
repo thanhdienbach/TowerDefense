@@ -105,7 +105,7 @@ namespace TowerDefense.Towers
 		{
 			get { return levelData.upgradeDescription; }
 		}
-
+		
 		/// <summary>
 		/// Initialises the Effects attached to this object
 		/// </summary>

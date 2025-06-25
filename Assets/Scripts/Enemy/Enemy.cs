@@ -10,7 +10,6 @@ public class Enemy : UnitBase
 {
     [Header("Enemy parameter varriable")]
     public UnitConfig enemyConfig;
-    public WeaponConfig weaponConfig;
 
     [Header("Enemy move variable")]
     public NavMeshAgent agent;
@@ -19,20 +18,18 @@ public class Enemy : UnitBase
 
     [Header("Other variable of enemy")]
     public float rarity;
-    public Attack enemyAttack;
     public DeleyTimer timer;
 
     void Start()
     {
-        teamID = enemyConfig.teamID;
-
         agent = GetComponent<NavMeshAgent>();
-        enemyAttack = GetComponent<Attack>();
 
         myHealth = GetComponent<Health>();
         attack = GetComponent<Attack>();
+        teamID = GetComponent<TargetFilterData>();
         myHealth.Init(enemyConfig);
-        attack.Init(weaponConfig);
+        attack.Init();
+        teamID.Init(enemyConfig);
 
         rarity = enemyConfig.rarity;
         agent.speed = enemyConfig.speed;
@@ -53,7 +50,7 @@ public class Enemy : UnitBase
         if (enemyConfig.attackRange > agent.remainingDistance & timer.IsReady())
         {
             agent.isStopped = true;
-            enemyAttack.Attacking(enemyAttack.currentWeapon);
+            attack.Attacking(attack.currentWeapon);
             transform.LookAt(destination);
         }
     }

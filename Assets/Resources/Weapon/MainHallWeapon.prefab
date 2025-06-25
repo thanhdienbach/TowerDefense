@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d467ba5cd28e64f9108dff826c2064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponConfig: {fileID: 11400000, guid: 54f41b2f05bd9aa42839e35355926802, type: 2}
+  weaponConfig: {fileID: 11400000, guid: ecbaec9fa0fc5d24fb1bfd7a7e8be50e, type: 2}
   bulletPool: {fileID: 0}
 --- !u!114 &-6765831865315824803
 MonoBehaviour:
@@ -59,3 +59,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5106dd4a29d9a43af3ceb5c82eacd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pooledObject: []
+  pooledBullet: []

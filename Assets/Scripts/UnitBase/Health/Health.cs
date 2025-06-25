@@ -11,14 +11,5 @@ public class Health : MonoBehaviour
         maxHealth = config.maxHP;
         curentHealth = maxHealth;
     }
-    void Start()
-    {
-        
-    }
 
-    
-    void Update()
-    {
-        
-    }
 }

@@ -19,4 +19,5 @@ MonoBehaviour:
   detectRange: 20
   isNeedUpdateTargetPosition: 0
   rarity: 35
-  teamID: 5
+  team: 1
+  unitType: 5

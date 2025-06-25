@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuperTower_Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a48a2c9e336474aa48f8827646fe8d3a, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a48a2c9e336474aa48f8827646fe8d3a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.024999995
@@ -91,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuperTower_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a21a3f7bd3c644fb9b36035645566b9, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a21a3f7bd3c644fb9b36035645566b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 96
@@ -163,6 +171,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 193554455897215674}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 5a21a3f7bd3c644fb9b36035645566b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -391828094824629563}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 5a21a3f7bd3c644fb9b36035645566b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3625326963986174501}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 5a21a3f7bd3c644fb9b36035645566b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8905717678828282193}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 5a21a3f7bd3c644fb9b36035645566b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7411611708212721418}
   m_SourcePrefab: {fileID: 100100000, guid: 5a21a3f7bd3c644fb9b36035645566b9, type: 3}
 --- !u!4 &7654963453075512349 stripped
 Transform:
@@ -198,3 +222,74 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 5a21a3f7bd3c644fb9b36035645566b9, type: 3}
+--- !u!114 &-391828094824629563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654963453075800125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa296f5d341cdd41afc5f656c0cc36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myHealth: {fileID: 0}
+  attack: {fileID: 0}
+  teamID: {fileID: 0}
+  towerConfig: {fileID: 0}
+  playingPanle: {fileID: 0}
+--- !u!114 &-3625326963986174501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654963453075800125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897ea8b630675b7449f8c82766444adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  curentHealth: 0
+--- !u!114 &-8905717678828282193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654963453075800125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b049d0c81b96ef342aa2333d0156ed93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  currentWeapon: {fileID: 0}
+  typeOfTarget: 1
+  teamID: {fileID: 0}
+  targetToTeam: 0
+  targetToUnitType: 0
+  focusPosition: {fileID: 0}
+  conditionTarget: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  detectionRadius: 30
+  targetsInRange: []
+  bestTarget: {fileID: 0}
+--- !u!114 &7411611708212721418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654963453075800125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5d98dce24264042b53026164c0b92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  unitType: 0

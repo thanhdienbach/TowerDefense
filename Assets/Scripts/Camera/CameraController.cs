@@ -30,7 +30,6 @@ public class CameraController : MonoBehaviour
     /// </summary>
     void MoveCamera(float moveSpeed)
     {
-        Debug.Log("Move camera");
         // Get information of touch point compared last frame
         delta = playerInputForCamera.touch0.deltaPosition;
         // Caculate the point camera will move to

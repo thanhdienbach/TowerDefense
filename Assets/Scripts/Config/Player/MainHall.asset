@@ -15,3 +15,10 @@ MonoBehaviour:
   maxHP: 10
   damage: 1
   speed: 4
+  attackRange: 0
+  detectRange: 0
+  isNeedUpdateTargetPosition: 0
+  rarity: 0
+  team: 0
+  unitType: 0
+  typeOfTarget: 1

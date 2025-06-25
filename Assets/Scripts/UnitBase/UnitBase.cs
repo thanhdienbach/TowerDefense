@@ -6,5 +6,5 @@ public class UnitBase : MonoBehaviour
 {
     public Health myHealth;
     public Attack attack;
-    public TeamID teamID;
+    public TargetFilterData teamID;
 }

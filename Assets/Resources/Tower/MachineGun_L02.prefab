@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret_MachineGun_L02
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b29d7ff11c99340e38246a09f771946f, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b29d7ff11c99340e38246a09f771946f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.026
@@ -78,6 +82,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: eef9d1528875a43edb151eb2f6326ff4, type: 3}
       propertyPath: m_Name
       value: MachineGun_L02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: eef9d1528875a43edb151eb2f6326ff4, type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eef9d1528875a43edb151eb2f6326ff4, type: 3}
       propertyPath: m_LocalScale.x
@@ -151,6 +159,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 469117835886928609}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: eef9d1528875a43edb151eb2f6326ff4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -53942066255784366}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: eef9d1528875a43edb151eb2f6326ff4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8481583222624111708}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: eef9d1528875a43edb151eb2f6326ff4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1029023100319231708}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: eef9d1528875a43edb151eb2f6326ff4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 651203010095512255}
   m_SourcePrefab: {fileID: 100100000, guid: eef9d1528875a43edb151eb2f6326ff4, type: 3}
 --- !u!4 &8534776002708751522 stripped
 Transform:
@@ -186,3 +210,74 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: eef9d1528875a43edb151eb2f6326ff4, type: 3}
+--- !u!114 &-53942066255784366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534776002708789378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa296f5d341cdd41afc5f656c0cc36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myHealth: {fileID: 0}
+  attack: {fileID: 0}
+  teamID: {fileID: 0}
+  towerConfig: {fileID: 0}
+  playingPanle: {fileID: 0}
+--- !u!114 &8481583222624111708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534776002708789378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897ea8b630675b7449f8c82766444adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  curentHealth: 0
+--- !u!114 &-1029023100319231708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534776002708789378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b049d0c81b96ef342aa2333d0156ed93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  currentWeapon: {fileID: 0}
+  typeOfTarget: 1
+  teamID: {fileID: 0}
+  targetToTeam: 0
+  targetToUnitType: 0
+  focusPosition: {fileID: 0}
+  conditionTarget: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  detectionRadius: 30
+  targetsInRange: []
+  bestTarget: {fileID: 0}
+--- !u!114 &651203010095512255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534776002708789378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5d98dce24264042b53026164c0b92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  unitType: 0

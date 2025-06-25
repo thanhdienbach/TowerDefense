@@ -23,9 +23,9 @@ TagManager:
   - FlyingEnemies
   - GroundEnemyTargettingProjectiles
   - BuildingPlace
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - CanBeAttack
   - 
   - 
   - 

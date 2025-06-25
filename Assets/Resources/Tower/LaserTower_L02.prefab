@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserTower_L02
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 85a7f547df06a4dd0a488c2c45f76e64, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 85a7f547df06a4dd0a488c2c45f76e64, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.5
@@ -84,6 +88,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4175110328239544415}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 85a7f547df06a4dd0a488c2c45f76e64,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4052308688309473583}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 85a7f547df06a4dd0a488c2c45f76e64,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6382317423601704781}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 85a7f547df06a4dd0a488c2c45f76e64,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4950708532832444430}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 85a7f547df06a4dd0a488c2c45f76e64,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8587576741825201943}
   m_SourcePrefab: {fileID: 100100000, guid: 85a7f547df06a4dd0a488c2c45f76e64, type: 3}
 --- !u!4 &5292944846925356913 stripped
 Transform:
@@ -119,6 +139,77 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 85a7f547df06a4dd0a488c2c45f76e64, type: 3}
+--- !u!114 &4052308688309473583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292944846925841233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa296f5d341cdd41afc5f656c0cc36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myHealth: {fileID: 0}
+  attack: {fileID: 0}
+  teamID: {fileID: 0}
+  towerConfig: {fileID: 0}
+  playingPanle: {fileID: 0}
+--- !u!114 &-6382317423601704781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292944846925841233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897ea8b630675b7449f8c82766444adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  curentHealth: 0
+--- !u!114 &4950708532832444430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292944846925841233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b049d0c81b96ef342aa2333d0156ed93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  currentWeapon: {fileID: 0}
+  typeOfTarget: 1
+  teamID: {fileID: 0}
+  targetToTeam: 0
+  targetToUnitType: 0
+  focusPosition: {fileID: 0}
+  conditionTarget: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  detectionRadius: 30
+  targetsInRange: []
+  bestTarget: {fileID: 0}
+--- !u!114 &8587576741825201943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292944846925841233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5d98dce24264042b53026164c0b92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  unitType: 0
 --- !u!1001 &8371755046061646847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +221,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4feed95418adc4168a0dcdbc33177fe6, type: 3}
       propertyPath: m_Name
       value: LaserTower_TURRET_L02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4feed95418adc4168a0dcdbc33177fe6, type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4feed95418adc4168a0dcdbc33177fe6, type: 3}
       propertyPath: m_LocalPosition.x

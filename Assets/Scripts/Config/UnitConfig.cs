@@ -17,5 +17,7 @@ public class UnitConfig : ScriptableObject
 
     [Header("Other variable")]
     public float rarity;
-    public TeamID teamID;
+    public TeamId team;
+    public UnitType unitType;
+    public TypeOfTarget typeOfTarget;
 }

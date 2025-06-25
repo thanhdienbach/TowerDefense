@@ -35,6 +35,7 @@ public class PlayingPanle : MonoBehaviour
     {
         Init_Attribute();
         Init_ShowInforToUI();
+        Init_AddListener();
     }
     void Init_Attribute()
     {
@@ -47,18 +48,6 @@ public class PlayingPanle : MonoBehaviour
         ShowInfoToUI(mainHallCurrentHealth_Text, MainHall.instance.myHealth.curentHealth.ToString());
         ShowInfoToUI(mainHallEnergy_Text, MainHall.instance.energy.ToString());
     }
-    void StartWave()
-    {
-        
-    }
-    void IsPause()
-    {
-
-    }
-    void ChangeGameStateToBuildingState()
-    {
-
-    }
     public void ShowInfoToUI(TextMeshProUGUI textUI, string text)
     {
         textUI.text = text;
@@ -66,5 +55,13 @@ public class PlayingPanle : MonoBehaviour
     public void SetProcessToUI(Slider slider, float value)
     {
         slider.value = value;
+    }
+    void Init_AddListener()
+    {
+        startWave_Button.onClick.AddListener(StartWaveButtonEvent);
+    }
+    void StartWaveButtonEvent()
+    {
+
     }
 }

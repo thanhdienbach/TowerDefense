@@ -8,11 +8,11 @@ public class ObjectBool : MonoBehaviour
 {
     public List<GameObject> pooledObject;
     public List<Bullet> pooledBullet;
-    public void PoolObject(GameObject objectToPool, int amountToPool)
+    public void PoolObject(GameObject objectToPool, WeaponConfig weaponConfig)
     {
         pooledObject = new List<GameObject>();
         GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < weaponConfig.amountOfBullet; i++)
         {
             tmp = Instantiate(objectToPool);
             tmp.SetActive(false);

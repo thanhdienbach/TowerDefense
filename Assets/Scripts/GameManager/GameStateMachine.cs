@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class GameStateMachine : MonoBehaviour
 {
+
+    #region Instance
+    public static GameStateMachine Instance;
+    private void OnEnable()
+    {
+        Instance = this;
+    }
+    private void OnDisable()
+    {
+        Instance = null;
+    }
+    #endregion
+
     public GameState currentState;
     void Start()
     {
@@ -14,7 +27,7 @@ public class GameStateMachine : MonoBehaviour
     
     void Update()
     {
-        // currentState.Update();
+        currentState.Update();
     }
     public void ChangeState(GameState newState)
     {
