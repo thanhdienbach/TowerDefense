@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponConfig: {fileID: 11400000, guid: 2e5ac297b7b24a244ac1a633c51ff27a, type: 2}
   bulletPool: {fileID: 0}
+  weaponFilterData: {fileID: 0}
 --- !u!114 &9147989857709502364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,15 +92,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b665f727f980d441bb9aefcd169f872f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.8818388
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b665f727f980d441bb9aefcd169f872f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.36
+      value: 1.002
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b665f727f980d441bb9aefcd169f872f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5680914
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b665f727f980d441bb9aefcd169f872f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -256,6 +257,7 @@ MonoBehaviour:
   detectionRadius: 30
   targetsInRange: []
   bestTarget: {fileID: 0}
+  lookAtTarget: {fileID: 0}
 --- !u!114 &384287533563695557
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2248,12 +2248,17 @@ MonoBehaviour:
     m_Bits: 65536
   obsticalLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1032
   maxPlacementDistance: 100
   previewObject: {fileID: 0}
   hightOffset: 0
   isBuildingState: 0
   canPlace: 0
+  towers:
+  - {fileID: -2793474003796296520, guid: a9d6cb3342a0a2643b4718941400d085, type: 3}
+  - {fileID: -6015437198410765407, guid: 09e79fba13581ac478ff3915dcf4acd0, type: 3}
+  - {fileID: 4941301841134699081, guid: 511cc85c1f734754bbab15fe444f1e75, type: 3}
+  - {fileID: -391828094824629563, guid: 0528cbd978b870240ab146974dddb37b, type: 3}
 --- !u!4 &772399956
 Transform:
   m_ObjectHideFlags: 0
@@ -2303,7 +2308,7 @@ RectTransform:
   m_Children:
   - {fileID: 458122915}
   - {fileID: 118554265}
-  - {fileID: 1893541846}
+  - {fileID: 879350430}
   - {fileID: 1035896875}
   - {fileID: 1320037150}
   - {fileID: 1937180359}
@@ -2369,15 +2374,34 @@ MonoBehaviour:
   mainHallEnergy_Button: {fileID: 118554266}
   mainHallCurrentHealth_Text: {fileID: 1543977317}
   mainHallEnergy_Text: {fileID: 1632575450}
+  startWaveGameObject: {fileID: 879350429}
   startWave_Button: {fileID: 1893541847}
   waveInfo_ScroolView: {fileID: 1035896874}
   curentWaveInfo_Text: {fileID: 2002720458}
   curentWaveProcessInfo_Slider: {fileID: 701902813}
   pause_Button: {fileID: 1320037151}
+  isPlayingState: 0
+  playImage: {fileID: 21300000, guid: 2a0ebc1178b179642a2bbd429f7e9d83, type: 3}
+  pauseImage: {fileID: 21300000, guid: ccf372d25036e01498cf99758ac3e30c, type: 3}
   eMP_Button: {fileID: 2099857599}
+  eMP_Text: {fileID: 1101022074}
   laser_Button: {fileID: 278995457}
+  laser_Text: {fileID: 1042604375}
   machineGun_Button: {fileID: 1231546573}
+  machineGun_Text: {fileID: 245304936}
   powerl_Button: {fileID: 1431268500}
+  powerl_Text: {fileID: 1938855064}
+  towersButton: []
+  emp_Tower: {fileID: -2793474003796296520, guid: a9d6cb3342a0a2643b4718941400d085,
+    type: 3}
+  lazer_Tower: {fileID: -6015437198410765407, guid: 09e79fba13581ac478ff3915dcf4acd0,
+    type: 3}
+  machineGun_Tower: {fileID: 4941301841134699081, guid: 511cc85c1f734754bbab15fe444f1e75,
+    type: 3}
+  power_Tower: {fileID: -391828094824629563, guid: 0528cbd978b870240ab146974dddb37b,
+    type: 3}
+  buildTower: {fileID: 772399955}
+  indexOfButton: 0
 --- !u!114 &798148873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,6 +2463,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &879350429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879350430}
+  m_Layer: 5
+  m_Name: StartWaveGameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &879350430
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879350429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1893541846}
+  m_Father: {fileID: 798148869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -293, y: -81}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &966352896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,7 +3631,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1035896874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c11794b10c3a5d4d845dafe4a9c1042, type: 3}
+  m_Script: {fileID: 11500000, guid: b66c2b3c1d463bf4b8b3e265ebe8814a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1042604373
@@ -5561,8 +5621,6 @@ GameObject:
   - component: {fileID: 1893541849}
   - component: {fileID: 1893541848}
   - component: {fileID: 1893541847}
-  - component: {fileID: 1893541851}
-  - component: {fileID: 1893541850}
   m_Layer: 5
   m_Name: StartWaveButton
   m_TagString: Untagged
@@ -5577,17 +5635,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893541845}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 271547464}
-  m_Father: {fileID: 798148869}
+  m_Father: {fileID: 879350430}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -330, y: -81.6}
+  m_AnchoredPosition: {x: -87, y: -50.599976}
   m_SizeDelta: {x: 320, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893541847
@@ -5672,33 +5730,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893541845}
   m_CullTransparentMesh: 1
---- !u!114 &1893541850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893541845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb05a68246b03524d8630323203257e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1893541851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893541845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff0a02d19f0bef42b7b56c9672ee323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1893541847}
-  waveInfo_ScroolViewPopup: {fileID: 1035896879}
-  popup: {fileID: 0}
 --- !u!1 &1937180358
 GameObject:
   m_ObjectHideFlags: 0
@@ -5800,7 +5831,6 @@ GameObject:
   - component: {fileID: 1937591800}
   - component: {fileID: 1937591799}
   - component: {fileID: 1937591801}
-  - component: {fileID: 1937591802}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5845,26 +5875,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937591798}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4f417e14b6f46d4d86a3ebe935b678e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1937591802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937591798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6dae7a30c98664ab1876eab438b3fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myHealth: {fileID: 0}
-  attack: {fileID: 0}
-  teamID: {fileID: 0}
 --- !u!1 &1938855062
 GameObject:
   m_ObjectHideFlags: 0
@@ -6476,7 +6491,7 @@ PrefabInstance:
     - target: {fileID: 5126192183893299058, guid: ce5ebf37e3aec734b87c01f3b07c43f4,
         type: 3}
       propertyPath: energy
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5126192183893299058, guid: ce5ebf37e3aec734b87c01f3b07c43f4,
         type: 3}
@@ -6492,6 +6507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618131305667455902, guid: ce5ebf37e3aec734b87c01f3b07c43f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6618131305667557310, guid: ce5ebf37e3aec734b87c01f3b07c43f4,
         type: 3}

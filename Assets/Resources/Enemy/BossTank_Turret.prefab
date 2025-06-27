@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponConfig: {fileID: 11400000, guid: 42de23a28e82ed249b9b82fdcf303422, type: 2}
   bulletPool: {fileID: 0}
+  weaponFilterData: {fileID: 0}
 --- !u!114 &8509022949542634457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +80,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_TagString
-      value: GroundEnemies
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -125,6 +126,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 12ea73217ff6e0749be1dd5970af8cb3, type: 2}
+    - target: {fileID: 9500000, guid: 617480999c0dc45179a0e237b678012d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -230,6 +235,7 @@ MonoBehaviour:
   detectionRadius: 30
   targetsInRange: []
   bestTarget: {fileID: 0}
+  lookAtTarget: {fileID: 0}
 --- !u!114 &6655935229755631198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 1
-  unitType: 7
+  unitType: 8
 --- !u!195 &-463654324592953465
 NavMeshAgent:
   m_ObjectHideFlags: 0

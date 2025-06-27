@@ -16,5 +16,4 @@ public class tower : UnitBase
         attack.Init();
         teamID.Init(towerConfig);
     }
-
 }

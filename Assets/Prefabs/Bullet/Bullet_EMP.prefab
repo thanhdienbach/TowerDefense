@@ -48,6 +48,8 @@ MonoBehaviour:
   weaponConfig: {fileID: 0}
   isMoving: 0
   bestTarget: {fileID: 0}
+  bulletSpeed: 20
+  raycashDistanceOfset: 1.5
 --- !u!1 &2783710727253541813
 GameObject:
   m_ObjectHideFlags: 0

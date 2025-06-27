@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponConfig: {fileID: 11400000, guid: ecbaec9fa0fc5d24fb1bfd7a7e8be50e, type: 2}
   bulletPool: {fileID: 0}
+  targerFilterData: {fileID: 0}
 --- !u!114 &850541658250867891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +166,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6015717167143115721}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 71168782495474ac69411fd475ef70e6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2307938835740526452}
   m_SourcePrefab: {fileID: 100100000, guid: 71168782495474ac69411fd475ef70e6, type: 3}
 --- !u!1 &6618131305667455902 stripped
 GameObject:
@@ -186,9 +191,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHealth: {fileID: 0}
   attack: {fileID: 0}
-  teamID: 0
+  teamID: {fileID: 0}
   mainHallConfig: {fileID: 11400000, guid: 2f48c9d4aacfdd0449ad79369856f437, type: 2}
-  weaponConfig: {fileID: 11400000, guid: ecbaec9fa0fc5d24fb1bfd7a7e8be50e, type: 2}
+  playingPanle: {fileID: 0}
+  energy: 0
 --- !u!114 &1838518865797376122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +223,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons: []
   currentWeapon: {fileID: 0}
+  typeOfTarget: 0
+  teamID: {fileID: 0}
+  targetToTeam: 0
+  targetToUnitType: 0
+  focusPosition: {fileID: 0}
   conditionTarget: 0
   targetLayer:
     serializedVersion: 2
@@ -224,6 +235,7 @@ MonoBehaviour:
   detectionRadius: 30
   targetsInRange: []
   bestTarget: {fileID: 0}
+  lookAtTarget: {fileID: 0}
 --- !u!135 &6015717167143115721
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -245,6 +257,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.7604705
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2307938835740526452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618131305667455902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450cfbd60c221e840bacd6702cae6fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamId: 0
+  unitType: 1
 --- !u!4 &6618131305667557310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 71168782495474ac69411fd475ef70e6,

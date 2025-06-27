@@ -16,6 +16,8 @@ public class StructureBuilder : MonoBehaviour
     public bool isBuildingState;
     public bool canPlace;
 
+    public List<tower> towers;
+
     private void Start()
     {
         isBuildingState = true;
@@ -38,6 +40,7 @@ public class StructureBuilder : MonoBehaviour
             if (previewObject == null)
             {
                 previewObject = Instantiate(buildingPrefabs);
+                previewObject.GetComponent<Attack>().enabled = false;
             }
             Vector3 position = hit.point;
             position = SnapToGrid(position);
@@ -50,16 +53,16 @@ public class StructureBuilder : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0) && canPlace)
             {
-                previewObject.transform.position = new Vector3 (0,-100, 0);
                 buildingPrefabs.layer = 10;
                 Renderer renderer = buildingPrefabs.GetComponent<Renderer>();
                 renderer.material = renderer.sharedMaterial;
                 Instantiate(buildingPrefabs, position, Quaternion.identity);
                 buildingPrefabs.layer = 0;
+                GameObject.Destroy(previewObject);
             }
             else if (Input.GetMouseButtonUp(0) && !canPlace)
             {
-                previewObject.transform.position = new Vector3(0, -100, 0);
+                GameObject.Destroy(previewObject);
             }
         }
     }

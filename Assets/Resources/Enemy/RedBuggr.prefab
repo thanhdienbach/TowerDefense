@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponConfig: {fileID: 11400000, guid: f95c3219876d92c489758a597e9b6a87, type: 2}
   bulletPool: {fileID: 0}
+  weaponFilterData: {fileID: 0}
 --- !u!114 &695351099885813729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +80,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b7d3ea14f798b45309e64cbf222d83ad, type: 3}
       propertyPath: m_TagString
-      value: GroundEnemies
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b7d3ea14f798b45309e64cbf222d83ad, type: 3}
       propertyPath: m_LocalScale.x
@@ -240,6 +241,7 @@ MonoBehaviour:
   detectionRadius: 30
   targetsInRange: []
   bestTarget: {fileID: 0}
+  lookAtTarget: {fileID: 0}
 --- !u!114 &-4642657839379891371
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class UnitConfig : ScriptableObject
     public float maxHP;
     public float damage;
     public float speed;
+    public float cost;
 
     [Header("AI variable")]
     public float attackRange;

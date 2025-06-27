@@ -24,6 +24,7 @@ public class Attack : MonoBehaviour
     public Collider[] targetsInRange;
 
     public Transform bestTarget;
+    public LookAtTarget lookAtTarget;
 
     
     public void Init()
@@ -32,6 +33,7 @@ public class Attack : MonoBehaviour
         currentWeapon = GetComponentInChildren<Weapon>();
         teamID = GetComponentInChildren<TargetFilterData>();
         focusPosition = this.transform;
+        lookAtTarget = GetComponentInChildren<LookAtTarget>();
     }
     void LoadAllWeapon()
     {
@@ -69,6 +71,10 @@ public class Attack : MonoBehaviour
         if (bestTarget != null)
         {
             weapon.ShootBullet(bestTarget);
+            if (lookAtTarget != null)
+            {
+                lookAtTarget.LookToTarget(bestTarget);
+            }
         }
     }
     void FindTargetWithCondition(Collider[] targetsInRange, ConditionTarget conditionTarget)

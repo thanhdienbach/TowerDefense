@@ -11,5 +11,11 @@ public class Health : MonoBehaviour
         maxHealth = config.maxHP;
         curentHealth = maxHealth;
     }
-
+    public void CheckCurrentHealth()
+    {
+        if (curentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

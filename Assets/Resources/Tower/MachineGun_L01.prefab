@@ -63,7 +63,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ca1b398fbc1a64abaaf160449dab6c93,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1488499936053307750}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ca1b398fbc1a64abaaf160449dab6c93,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6001214572871758212}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ca1b398fbc1a64abaaf160449dab6c93,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6866016730171759793}
   m_SourcePrefab: {fileID: 100100000, guid: ca1b398fbc1a64abaaf160449dab6c93, type: 3}
 --- !u!4 &2391658924922670557 stripped
 Transform:
@@ -71,6 +83,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2391658924923066205}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2391658924923097597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ca1b398fbc1a64abaaf160449dab6c93,
+    type: 3}
+  m_PrefabInstance: {fileID: 2391658924923066205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1488499936053307750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391658924923097597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d467ba5cd28e64f9108dff826c2064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponConfig: {fileID: 11400000, guid: 00f999b04c84e7f4baf558389796b2ea, type: 2}
+  bulletPool: {fileID: 0}
+  weaponFilterData: {fileID: 0}
+--- !u!114 &6001214572871758212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391658924923097597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5106dd4a29d9a43af3ceb5c82eacd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: []
+  pooledBullet: []
+--- !u!114 &6866016730171759793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391658924923097597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5599899ea530c134d8b2de9af245478a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5745043417889302947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: dd040609d7aef419b9c85fc5bfa91345, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd040609d7aef419b9c85fc5bfa91345, type: 3}
       propertyPath: m_LocalScale.x
@@ -101,15 +160,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd040609d7aef419b9c85fc5bfa91345, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.84
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd040609d7aef419b9c85fc5bfa91345, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.406
+      value: 1.002
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd040609d7aef419b9c85fc5bfa91345, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd040609d7aef419b9c85fc5bfa91345, type: 3}
       propertyPath: m_LocalRotation.w
@@ -225,8 +284,7 @@ MonoBehaviour:
   myHealth: {fileID: 0}
   attack: {fileID: 0}
   teamID: {fileID: 0}
-  towerConfig: {fileID: 0}
-  playingPanle: {fileID: 0}
+  towerConfig: {fileID: 11400000, guid: 67196741aa2cfb24fa970e60df4ba386, type: 2}
 --- !u!114 &-3383387880222974708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,10 +321,11 @@ MonoBehaviour:
   conditionTarget: 1
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 524288
   detectionRadius: 30
   targetsInRange: []
   bestTarget: {fileID: 0}
+  lookAtTarget: {fileID: 0}
 --- !u!114 &-6144233030300358899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,8 +335,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5745043417889337091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd5d98dce24264042b53026164c0b92c, type: 3}
+  m_Script: {fileID: 11500000, guid: 450cfbd60c221e840bacd6702cae6fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
-  unitType: 0
+  teamId: 0
+  unitType: 4

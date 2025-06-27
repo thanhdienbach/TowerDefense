@@ -17,14 +17,20 @@ public class GameStateMachine : MonoBehaviour
     }
     #endregion
 
+    public GameState pauseState;
+    public GameState playingState;
     public GameState currentState;
     void Start()
     {
-        currentState = new MainMenuState();
+        CreatValueState();
+        currentState = pauseState;
         currentState.Enter();
     }
-
-    
+    void CreatValueState()
+    {
+        pauseState = new PauseState();
+        playingState = new PlayingState();
+    }
     void Update()
     {
         currentState.Update();

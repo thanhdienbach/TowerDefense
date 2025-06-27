@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6bca7a14f1cea478bd83ae56e91894, type: 3}
   m_Name: Weapon_EMP_Lv1
   m_EditorClassIdentifier: 
-  Name: Player_EMP
   damage: 1
   amountOfBullet: 20
   bullet: {fileID: 565067924095635864, guid: 36d0bda44a1696d4d86d7c2fb4e410d0, type: 3}
   detectRange: 20
-  attackStep: 1
+  attackStep: 2
   timeWillRecallBullet: 4

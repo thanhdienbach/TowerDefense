@@ -22,12 +22,17 @@ public class MainHall : UnitBase
     public float energy;
     public void Init()
     {
+        energy = 50;
         myHealth = GetComponent<Health>();
         attack = GetComponent<Attack>();
         teamID = GetComponent<TargetFilterData>();
         myHealth.Init(mainHallConfig);
         teamID.Init(mainHallConfig);
         attack.Init();
-    }  
+    }
 
+    void SetEnergy(float value)
+    {
+        energy += value;
+    }
 }

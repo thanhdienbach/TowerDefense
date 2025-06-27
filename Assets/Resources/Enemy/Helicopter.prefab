@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponConfig: {fileID: 11400000, guid: 54f41b2f05bd9aa42839e35355926802, type: 2}
   bulletPool: {fileID: 0}
+  weaponFilterData: {fileID: 0}
 --- !u!114 &6463240936754948694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +237,7 @@ MonoBehaviour:
   detectionRadius: 30
   targetsInRange: []
   bestTarget: {fileID: 0}
+  lookAtTarget: {fileID: 0}
 --- !u!114 &11412559274614661
 MonoBehaviour:
   m_ObjectHideFlags: 0

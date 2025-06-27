@@ -8,10 +8,14 @@ public class Weapon : MonoBehaviour
     public ObjectBool bulletPool;
     public DeleyTimer nextTimeCanAttack;
 
+    public TargetFilterData weaponFilterData;
+
     private void Start()
     {
         bulletPool = GetComponent<ObjectBool>();
         weaponConfig.bullet.GetComponent<Bullet>().weaponConfig = weaponConfig;
+        weaponFilterData = GetComponentInParent<TargetFilterData>();
+        weaponConfig.bullet.GetComponent<Bullet>().bulletFilterData = weaponFilterData;
         bulletPool.PoolObject(weaponConfig.bullet, weaponConfig);
     }
     public void ShootBullet(Transform bestTarget)
@@ -35,7 +39,15 @@ public class Weapon : MonoBehaviour
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
         bullet.SetActive(true);
-        bl.isMoving = true;
         bl.bestTarget = bestTarget;
+        bl.isMoving = true;
+    }
+    private void OnDestroy()
+    {
+        for (int i = 0; i < bulletPool.pooledObject.Count; i++)
+        {
+            GameObject.Destroy(bulletPool.pooledObject[i]);
+        }
+        bulletPool.pooledObject = null;
     }
 }
