@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponConfig: {fileID: 11400000, guid: 4c355bbfc5209244783330aaf5effee9, type: 2}
   bulletPool: {fileID: 0}
+  weaponFilterData: {fileID: 0}
 --- !u!114 &7221108867510661440
 MonoBehaviour:
   m_ObjectHideFlags: 0

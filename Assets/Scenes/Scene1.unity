@@ -2254,6 +2254,7 @@ MonoBehaviour:
   hightOffset: 0
   isBuildingState: 0
   canPlace: 0
+  hitPosition: {x: 0, y: 0, z: 0}
   towers:
   - {fileID: -2793474003796296520, guid: a9d6cb3342a0a2643b4718941400d085, type: 3}
   - {fileID: -6015437198410765407, guid: 09e79fba13581ac478ff3915dcf4acd0, type: 3}
@@ -5406,7 +5407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -448, y: 104}
+  m_AnchoredPosition: {x: -464, y: 104}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723593141
@@ -6392,7 +6393,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0, g: 0.06287694, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

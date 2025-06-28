@@ -50,8 +50,7 @@ public class Bullet : MonoBehaviour
     {
         if (timer.IsReady())
         {
-            gameObject.transform.position = Vector3.zero;
-            gameObject.SetActive(false);
+            CallBullet();
         }
     }
     public void MoveBulletFollowBestTarget(Transform bestTarget)
@@ -78,8 +77,7 @@ public class Bullet : MonoBehaviour
             TargetFilterData competitorFilterData = hit.collider.gameObject.GetComponent<TargetFilterData>();
             if (competitorFilterData == null)
             {
-                gameObject.transform.position = Vector3.zero;
-                gameObject.SetActive(false);
+                CallBullet();
                 return;
             }
             targetHealth = hit.collider.gameObject.GetComponent<Health>();
@@ -88,10 +86,14 @@ public class Bullet : MonoBehaviour
     }
     void HandleCollide()
     {
-        gameObject.transform.position = Vector3.zero;
-        gameObject.SetActive(false); 
+        CallBullet();
         TakeDame(weaponConfig.damage);
         targetHealth.CheckCurrentHealth();
+    }
+    void CallBullet()
+    {
+        gameObject.transform.position = Vector3.zero;
+        gameObject.SetActive(false);
     }
     void TakeDame(float value)
     {

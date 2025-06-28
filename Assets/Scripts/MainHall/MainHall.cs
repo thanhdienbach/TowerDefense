@@ -14,6 +14,7 @@ public class MainHall : UnitBase
     private void OnDisable()
     {
         instance = null;
+        GameStateMachine.Instance.ChangeState(GameStateMachine.Instance.gameOverState);
     }
     #endregion
 
@@ -31,8 +32,8 @@ public class MainHall : UnitBase
         attack.Init();
     }
 
-    void SetEnergy(float value)
+    public void SetEnergy(float value)
     {
-        energy += value;
+        energy -= value;
     }
 }

@@ -39,6 +39,10 @@ public class Enemy : UnitBase
     {
         EnemyAI();
     }
+    private void OnDisable()
+    {
+        SpawnEnemyController.instance.CountDestroyedEnemy();
+    }
     void EnemyAI()
     {
         SetDestinationOneTime(FinDestination());

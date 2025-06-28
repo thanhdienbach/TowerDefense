@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TowerDefense.Towers;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class StructureBuilder : MonoBehaviour
@@ -15,6 +17,7 @@ public class StructureBuilder : MonoBehaviour
 
     public bool isBuildingState;
     public bool canPlace;
+    public Vector3 hitPosition;
 
     public List<tower> towers;
 
@@ -37,27 +40,28 @@ public class StructureBuilder : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, maxPlacementDistance, buildLayer))
         {
-            if (previewObject == null)
+            if (previewObject == null && MainHall.instance.energy >= buildingPrefabs.GetComponent<tower>().towerConfig.cost)
             {
                 previewObject = Instantiate(buildingPrefabs);
                 previewObject.GetComponent<Attack>().enabled = false;
             }
-            Vector3 position = hit.point;
-            position = SnapToGrid(position);
-            previewObject.transform.position = position;
+            else if (MainHall.instance.energy < buildingPrefabs.GetComponent<tower>().towerConfig.cost)
+            {
+                return;
+            }
+            hitPosition = hit.point;
+            hitPosition = SnapToGrid(hitPosition);
+            previewObject.transform.position = hitPosition;
 
-            canPlace = !Physics.CheckBox(position, previewObject.GetComponent<Collider>().bounds.extents, previewObject.transform.rotation, obsticalLayer);
+            canPlace = !Physics.CheckBox(hitPosition, previewObject.GetComponent<Collider>().bounds.extents, previewObject.transform.rotation, obsticalLayer);
 
             SetColor(previewObject, canPlace ? Color.green : Color.red);
             SetMaterialTransparent(previewObject);
 
             if (Input.GetMouseButtonUp(0) && canPlace)
             {
-                buildingPrefabs.layer = 10;
-                Renderer renderer = buildingPrefabs.GetComponent<Renderer>();
-                renderer.material = renderer.sharedMaterial;
-                Instantiate(buildingPrefabs, position, Quaternion.identity);
-                buildingPrefabs.layer = 0;
+                BuildTower();
+                UpdateEnergy();
                 GameObject.Destroy(previewObject);
             }
             else if (Input.GetMouseButtonUp(0) && !canPlace)
@@ -91,5 +95,18 @@ public class StructureBuilder : MonoBehaviour
         Renderer renderer = gameObject.GetComponent<Renderer>();
         Material newCloneMaterial = renderer.material;
         newCloneMaterial.color = color;
+    }
+    void BuildTower()
+    {
+        buildingPrefabs.layer = 10;
+        Renderer renderer = buildingPrefabs.GetComponent<Renderer>();
+        renderer.material = renderer.sharedMaterial;
+        Instantiate(buildingPrefabs, hitPosition, Quaternion.identity);
+        buildingPrefabs.layer = 0;
+    }
+    void UpdateEnergy()
+    {
+        MainHall.instance.SetEnergy(buildingPrefabs.GetComponent<tower>().towerConfig.cost);
+        PlayingPanle.instance.ShowInfoToUI(PlayingPanle.instance.mainHallEnergy_Text , MainHall.instance.energy.ToString());
     }
 }

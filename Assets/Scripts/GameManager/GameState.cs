@@ -48,3 +48,33 @@ public class PauseState : GameState
 
     }
 }
+public class GameOverState : GameState
+{
+    public override void Enter()
+    {
+        Time.timeScale = 0f;
+    }
+    public override void Update()
+    {
+        Debug.Log("GameOver");
+    }
+    public override void Exit()
+    {
+
+    }
+}
+public class WinPlayScene : GameState
+{
+    public override void Enter()
+    {
+        Time.timeScale = 0f;
+    }
+    public override void Update()
+    {
+        Debug.Log("Win");
+    }
+    public override void Exit()
+    {
+
+    }
+}

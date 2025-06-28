@@ -19,6 +19,8 @@ public class GameStateMachine : MonoBehaviour
 
     public GameState pauseState;
     public GameState playingState;
+    public GameState gameOverState;
+    public GameState winPlayScene;
     public GameState currentState;
     void Start()
     {
@@ -30,6 +32,8 @@ public class GameStateMachine : MonoBehaviour
     {
         pauseState = new PauseState();
         playingState = new PlayingState();
+        gameOverState = new GameOverState();
+        winPlayScene = new WinPlayScene();
     }
     void Update()
     {

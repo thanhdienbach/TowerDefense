@@ -134,9 +134,12 @@ public class PlayingPanle : MonoBehaviour
         buildTower.buildingPrefabs = buildTower.towers[index].GameObject();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        CheckCostOfTowerAndShowToUI();
+        if (GameStateMachine.Instance.currentState == GameStateMachine.Instance.playingState)
+        {
+            CheckCostOfTowerAndShowToUI();
+        }
     }
     void CheckCostOfTowerAndShowToUI()
     {

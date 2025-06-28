@@ -5,6 +5,19 @@ using UnityEngine;
 
 public class SpawnEnemyController : MonoBehaviour
 {
+
+    #region instance
+    public static SpawnEnemyController instance;
+    private void OnEnable()
+    {
+        instance = this;
+    }
+    private void OnDisable()
+    {
+        instance = null;
+    }
+    #endregion
+
     /// <summary>
     /// Enemy list. It will be spawn in run time
     /// </summary>
@@ -28,6 +41,9 @@ public class SpawnEnemyController : MonoBehaviour
     float rarityCumulative;
     public int indexOfEnemy;
     public float randomNumber;
+
+    [Header("Count destroy enemy")]
+    public int destroyedEnemy;
 
     public void Init()
     {
@@ -108,5 +124,14 @@ public class SpawnEnemyController : MonoBehaviour
             }
         }
         return indexOfEnemy;
+    }
+    
+    public void CountDestroyedEnemy()
+    {
+        destroyedEnemy += 1;
+        if (destroyedEnemy == numberOfEnemyConfig.maxWave * (numberOfEnemyConfig.enemyInFirstWave + numberOfEnemyConfig.enemyInSecondWave + numberOfEnemyConfig.enemyInThirdWave))
+        {
+            GameStateMachine.Instance.ChangeState(GameStateMachine.Instance.winPlayScene);
+        }
     }
 }
