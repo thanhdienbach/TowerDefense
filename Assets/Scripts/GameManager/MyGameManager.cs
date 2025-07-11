@@ -1,7 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class MyGameManager : MonoBehaviour
 {
@@ -10,30 +12,62 @@ public class MyGameManager : MonoBehaviour
     public static MyGameManager instance;
     private void OnEnable()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
-    }
-    private void OnDisable()
-    {
-        instance = null;
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
-    List<UnitBase> unitBases;
+    public List<UnitBase> unitBases;
 
-    public MainHall maiHall;
-    public SpawnEnemyController spawnEnemy;
-    public UIManager uIManager;
+    public string sceneName;
+    public GameStateMachine gameStateMachine;
 
-    void Awake()
+    private void Awake()
     {
-        InitializeGameObject();
+        
+    }
+    void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        sceneName = SceneManager.GetActiveScene().name;
+        InitializeGameObject(sceneName);
     }
 
-    void InitializeGameObject()
+    public void OnSceneLoaded(Scene _scene, LoadSceneMode _mode)
     {
-        maiHall.Init();
-        spawnEnemy.Init();
-        uIManager.Init();
+        Debug.Log("LoadScene");
+        sceneName = _scene.name;
+
+        gameStateMachine = GetComponent<GameStateMachine>();
+
+        if (_scene.name == "MainMenuScene") // Thay bằng scene index
+        {
+            gameStateMachine.ChangeState(gameStateMachine.mainMenuState);
+        }
+        else
+        {
+            gameStateMachine.ChangeState(gameStateMachine.pauseState);
+        }
+
+        InitializeGameObject(_scene.name);
+    }
+
+    void InitializeGameObject(string sceneName)
+    {
+        AudioManager.instance.Init(sceneName);
+        
+        if (sceneName != "MainMenuScene")
+        {
+            MainHall.instance.Init();
+            SpawnEnemyController.instance.Init();
+        }
+
+        UIManager.instance.Init();
     }
 
 }

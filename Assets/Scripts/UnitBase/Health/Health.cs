@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public float maxHealth;
     public float curentHealth;
+    public PlayingPanle playingPanle;
     public void Init(UnitConfig config)
     {
         maxHealth = config.maxHP;
@@ -15,6 +16,16 @@ public class Health : MonoBehaviour
     {
         if (curentHealth <= 0)
         {
+            if (GetComponent<TargetFilterData>().unitType == UnitType.Player_MainHall)
+            {
+                GameStateMachine.instance.ChangeState(GameStateMachine.instance.gameOverState);
+                playingPanle.ChangeToEndGamePanle();
+                return;
+            }
+            if (GetComponent<TargetFilterData>().unitType == UnitType.Enemy_Boss)
+            {
+                return;
+            }
             Destroy(gameObject);
         }
     }

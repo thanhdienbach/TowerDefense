@@ -15,6 +15,8 @@ MonoBehaviour:
   damage: 1
   amountOfBullet: 20
   bullet: {fileID: 1005321012000136381, guid: 61c12b85edde77448af04d48168a86a8, type: 3}
-  detectRange: 25
-  attackStep: 0.7
+  detectRange: 20
+  attackStep: 0.5
+  bulletSpeed: 30
+  isNeedUpgradeTargetPosition: 0
   timeWillRecallBullet: 4

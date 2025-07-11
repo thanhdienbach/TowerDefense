@@ -8,10 +8,22 @@ namespace TowerDefense.UI
 	public class Rotator : MonoBehaviour
 	{
 		public Vector3 rotationSpeed;
-	
+		public bool isRotation;
+
+		void Start ()
+		{
+			isRotation = true;
+		}
 		void Update ()
 		{
-			transform.localEulerAngles += rotationSpeed;
+            if (isRotation)
+            {
+                transform.localEulerAngles += rotationSpeed;
+            }
+            else if (!isRotation)
+			{
+				transform.rotation = Quaternion.identity;
+			}
 		}
 	}
 }

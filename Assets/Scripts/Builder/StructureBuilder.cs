@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TowerDefense.Towers;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 
 public class StructureBuilder : MonoBehaviour
 {
+
     public GameObject buildingPrefabs; // Structer will build
     public LayerMask buildLayer; // Layer can build
     public LayerMask obsticalLayer; // Layer can not build
@@ -15,31 +18,57 @@ public class StructureBuilder : MonoBehaviour
     public GameObject previewObject; // Object preview before build
     public float hightOffset; // Offset for position of structer when build
 
-    public bool isBuildingState;
+    public Touch touch;
     public bool canPlace;
     public Vector3 hitPosition;
 
     public List<tower> towers;
 
-    private void Start()
+    public PlayerInputForCamera playerInputForCamera;
+
+    #region
+    public static StructureBuilder instance;
+    private void OnEnable()
     {
-        isBuildingState = true;
+        instance = this;
+    }
+    private void OnDisable()
+    {
+        instance = null;
+    }
+    #endregion
+
+    public void Init()
+    {
+
     }
 
     void Update()
     {
-        if (isBuildingState && Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
-            Builder(); 
+            touch = Input.GetTouch(0);
+            if (EnoughEnergy())
+            {
+                Builder();
+            }
+            else
+            {
+                playerInputForCamera.isFreeZone = true;
+            }
         }
     }
-
+    bool EnoughEnergy()
+    {
+        return buildingPrefabs.GetComponent<tower>().towerConfig.cost <= MainHall.instance.energy;
+    }
     void Builder()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, maxPlacementDistance, buildLayer))
         {
+            playerInputForCamera.isFreeZone = false;
             if (previewObject == null && MainHall.instance.energy >= buildingPrefabs.GetComponent<tower>().towerConfig.cost)
             {
                 previewObject = Instantiate(buildingPrefabs);
@@ -57,17 +86,21 @@ public class StructureBuilder : MonoBehaviour
 
             SetColor(previewObject, canPlace ? Color.green : Color.red);
             SetMaterialTransparent(previewObject);
-
-            if (Input.GetMouseButtonUp(0) && canPlace)
+            if (touch.phase == TouchPhase.Ended && canPlace)
             {
                 BuildTower();
                 UpdateEnergy();
+                playerInputForCamera.isFreeZone = true;
                 GameObject.Destroy(previewObject);
             }
-            else if (Input.GetMouseButtonUp(0) && !canPlace)
+            else if (touch.phase == TouchPhase.Ended && !canPlace)
             {
                 GameObject.Destroy(previewObject);
             }
+        }
+        else
+        {
+            GameObject.Destroy(previewObject);
         }
     }
     Vector3 SnapToGrid(Vector3 position)
@@ -75,7 +108,16 @@ public class StructureBuilder : MonoBehaviour
         Collider colider = previewObject.GetComponent<Collider>();
         if (colider != null)
         {
-            hightOffset = colider.bounds.extents.y;
+            
+            if (Math.Abs(colider.bounds.min.y - previewObject.transform.position.y) < 0.1)
+            {
+                hightOffset = 0f;
+            }
+            else
+            {
+                hightOffset = colider.bounds.extents.y;
+            }
+            
         }
         return new Vector3(Mathf.Round(position.x), position.y + hightOffset, Mathf.Round(position.z));
     }
@@ -107,6 +149,11 @@ public class StructureBuilder : MonoBehaviour
     void UpdateEnergy()
     {
         MainHall.instance.SetEnergy(buildingPrefabs.GetComponent<tower>().towerConfig.cost);
-        PlayingPanle.instance.ShowInfoToUI(PlayingPanle.instance.mainHallEnergy_Text , MainHall.instance.energy.ToString());
+        PlayingPanle.instance.CheckCostOfTowerAndShowToUI();
+    }
+
+    public void SetBuilingPrefabsToBuild(int index)
+    {
+        buildingPrefabs = towers[index].GameObject();
     }
 }

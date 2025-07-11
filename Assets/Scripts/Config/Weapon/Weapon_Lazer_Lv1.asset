@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6bca7a14f1cea478bd83ae56e91894, type: 3}
   m_Name: Weapon_Lazer_Lv1
   m_EditorClassIdentifier: 
-  Name: Player_Lazer
-  damage: 1
+  damage: 5
   amountOfBullet: 20
   bullet: {fileID: 6241060569393846184, guid: e8c179c199df9a748b8349097552b87b, type: 3}
   detectRange: 20
-  attackStep: 1
+  attackStep: 2
+  bulletSpeed: 240
+  isNeedUpgradeTargetPosition: 1
   timeWillRecallBullet: 4

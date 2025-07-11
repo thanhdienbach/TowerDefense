@@ -7,14 +7,11 @@ public class UnitConfig : ScriptableObject
 {
     [Header("Parameter variable")]
     public float maxHP;
-    public float damage;
-    public float speed;
     public float cost;
 
     [Header("AI variable")]
     public float attackRange;
-    public float detectRange;
-    public bool isNeedUpdateTargetPosition;
+    public float moveSpeed;
 
     [Header("Other variable")]
     public float rarity;

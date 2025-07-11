@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour
     public DeleyTimer nextTimeCanAttack;
 
     public TargetFilterData weaponFilterData;
+    public Transform bulletSlot;
+
 
     private void Start()
     {
@@ -18,7 +20,7 @@ public class Weapon : MonoBehaviour
         weaponConfig.bullet.GetComponent<Bullet>().bulletFilterData = weaponFilterData;
         bulletPool.PoolObject(weaponConfig.bullet, weaponConfig);
     }
-    public void ShootBullet(Transform bestTarget)
+    public void ShootBullet(Transform _bestTarget)
     {
         if (!nextTimeCanAttack.IsReady())
         {
@@ -36,12 +38,30 @@ public class Weapon : MonoBehaviour
             return;
         }
         nextTimeCanAttack.SetDeley(weaponConfig.attackStep);
-        bullet.transform.position = transform.position;
+        bullet.transform.position = bulletSlot.position;
         bullet.transform.rotation = transform.rotation;
-        bullet.SetActive(true);
-        bl.bestTarget = bestTarget;
+        if (weaponFilterData.unitType == UnitType.Player_Energy)
+        {
+            EnergyRecovery();
+            return;
+        }
+        else if (weaponConfig.isNeedUpgradeTargetPosition)
+        {
+            bl.dynamicBestTarget = _bestTarget;
+        }
+        else
+        {
+            bl.staticBestTarget = _bestTarget;
+        }
         bl.isMoving = true;
+        bullet.SetActive(true);
     }
+    void EnergyRecovery()
+    {
+        MainHall.instance.SetEnergy(weaponConfig.damage);
+        PlayingPanle.instance.CheckCostOfTowerAndShowToUI();
+    }
+    
     private void OnDestroy()
     {
         for (int i = 0; i < bulletPool.pooledObject.Count; i++)

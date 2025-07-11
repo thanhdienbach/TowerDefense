@@ -26,7 +26,7 @@ public class PlayingState : GameState
     }
     public override void Update()
     {
-        Debug.Log("Plaing State");
+        Debug.Log("Playing State");
     }
     public override void Exit()
     {
@@ -72,6 +72,21 @@ public class WinPlayScene : GameState
     public override void Update()
     {
         Debug.Log("Win");
+    }
+    public override void Exit()
+    {
+
+    }
+}
+public class MainMenuState : GameState
+{
+    public override void Enter()
+    {
+        
+    }
+    public override void Update()
+    {
+        Debug.Log("Main Menu State");
     }
     public override void Exit()
     {

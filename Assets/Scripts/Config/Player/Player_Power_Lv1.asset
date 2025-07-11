@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: Player_Power_Lv1
   m_EditorClassIdentifier: 
   maxHP: 10
-  damage: 1
-  speed: 4
-  cost: 10
+  cost: 12
   attackRange: 0
-  detectRange: 0
-  isNeedUpdateTargetPosition: 0
+  moveSpeed: 0
   rarity: 0
   team: 0
   unitType: 2

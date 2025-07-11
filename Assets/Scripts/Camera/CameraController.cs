@@ -20,9 +20,9 @@ public class CameraController : MonoBehaviour
         if (playerInputForCamera.rightInput)
         {
             MoveCamera(cameraConfig.dragSpeed);
+            ClampCamera();
+            ZoomCamera();
         }
-        ClampCamera();
-        ZoomCamera();
     }
 
     /// <summary>

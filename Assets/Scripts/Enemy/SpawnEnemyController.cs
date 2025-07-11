@@ -41,22 +41,25 @@ public class SpawnEnemyController : MonoBehaviour
     float rarityCumulative;
     public int indexOfEnemy;
     public float randomNumber;
+    public Enemy[] loadedEnemy;
 
     [Header("Count destroy enemy")]
     public int destroyedEnemy;
 
+    public PlayingPanle playingPanle;
+
     public void Init()
     {
-        Enemy[] loadedEnemy = Resources.LoadAll<Enemy>("Enemy");
+        loadedEnemy = Resources.LoadAll<Enemy>("Enemy");
         foreach (Enemy enemy in loadedEnemy)
         {
-            totalRarity += enemy.rarity;
+            totalRarity += enemy.enemyConfig.rarity;
             enemys.Add(enemy);
         }
-        enemys.Sort((a,b) => a.rarity.CompareTo(b.rarity));
+        enemys.Sort((a,b) => a.enemyConfig.rarity.CompareTo(b.enemyConfig.rarity));
         for (int i = 0; i < enemys.Count; i++)
         {
-            rarityCumulative += enemys[i].rarity;
+            rarityCumulative += enemys[i].enemyConfig.rarity;
             rarityList.Add(rarityCumulative);
         }
         timer.SetDeley(firstDeleyEnemyTime);
@@ -131,7 +134,8 @@ public class SpawnEnemyController : MonoBehaviour
         destroyedEnemy += 1;
         if (destroyedEnemy == numberOfEnemyConfig.maxWave * (numberOfEnemyConfig.enemyInFirstWave + numberOfEnemyConfig.enemyInSecondWave + numberOfEnemyConfig.enemyInThirdWave))
         {
-            GameStateMachine.Instance.ChangeState(GameStateMachine.Instance.winPlayScene);
+            playingPanle.ChangeToEndGamePanle();
+            GameStateMachine.instance.ChangeState(GameStateMachine.instance.winPlayScene);
         }
     }
 }

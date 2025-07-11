@@ -14,16 +14,13 @@ public class MainHall : UnitBase
     private void OnDisable()
     {
         instance = null;
-        GameStateMachine.Instance.ChangeState(GameStateMachine.Instance.gameOverState);
     }
     #endregion
 
     public UnitConfig mainHallConfig;
-    public PlayingPanle playingPanle;
     public float energy;
     public void Init()
     {
-        energy = 50;
         myHealth = GetComponent<Health>();
         attack = GetComponent<Attack>();
         teamID = GetComponent<TargetFilterData>();

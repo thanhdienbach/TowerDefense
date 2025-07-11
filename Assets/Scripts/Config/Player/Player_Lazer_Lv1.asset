@@ -13,13 +13,10 @@ MonoBehaviour:
   m_Name: Player_Lazer_Lv1
   m_EditorClassIdentifier: 
   maxHP: 10
-  damage: 1
-  speed: 4
-  cost: 6
+  cost: 10
   attackRange: 0
-  detectRange: 0
-  isNeedUpdateTargetPosition: 0
+  moveSpeed: 0
   rarity: 0
   team: 0
-  unitType: 2
+  unitType: 3
   typeOfTarget: 1

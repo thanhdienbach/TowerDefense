@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2886298469113911709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1127843738476781071}
+  m_Layer: 19
+  m_Name: BulletSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1127843738476781071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886298469113911709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3918671337924114282}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4181110201597323272
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +61,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.45, z: 2.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1127843738476781071}
   m_Father: {fileID: 6960422685131823261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7812157304671022219
@@ -48,6 +80,7 @@ MonoBehaviour:
   weaponConfig: {fileID: 11400000, guid: 42de23a28e82ed249b9b82fdcf303422, type: 2}
   bulletPool: {fileID: 0}
   weaponFilterData: {fileID: 0}
+  bulletSlot: {fileID: 1127843738476781071}
 --- !u!114 &8509022949542634457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +227,6 @@ MonoBehaviour:
   agent: {fileID: 0}
   destination: {fileID: 0}
   destinationSet: 0
-  rarity: 0
 --- !u!114 &7916975112681170727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   curentHealth: 0
+  playingPanle: {fileID: 0}
 --- !u!114 &7784005057138032090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,9 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
-  currentWeapon: {fileID: 0}
+  currentWeapons: []
   typeOfTarget: 1
-  teamID: {fileID: 0}
+  targetFilterData: {fileID: 0}
   targetToTeam: 0
   targetToUnitType: 0
   focusPosition: {fileID: 0}
@@ -236,6 +269,7 @@ MonoBehaviour:
   targetsInRange: []
   bestTarget: {fileID: 0}
   lookAtTarget: {fileID: 0}
+  lazerLineRenderer: {fileID: 0}
 --- !u!114 &6655935229755631198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 1
-  unitType: 8
+  unitType: 9
 --- !u!195 &-463654324592953465
 NavMeshAgent:
   m_ObjectHideFlags: 0

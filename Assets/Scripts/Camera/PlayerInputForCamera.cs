@@ -9,9 +9,19 @@ public class PlayerInputForCamera : MonoBehaviour
     public Slider slider;
     public float touchCount;
     public bool rightInput;
+    public bool isFreeZone;
+
+    private void Start()
+    {
+        isFreeZone = true;
+    }
     void Update()
     {
         HandlePlayerInput();
+        if (touch0.phase == TouchPhase.Ended)
+        {
+            isFreeZone = true ;
+        }
     }
     void HandlePlayerInput()
     {
@@ -24,7 +34,12 @@ public class PlayerInputForCamera : MonoBehaviour
     }
     void RightInput()
     {
-        if (touchCount == 1 && IsTouchOverUI(touch0.fingerId))
+        if (!IsTouchOverUI(touch0.fingerId))
+        {
+            rightInput = false;
+            return;
+        }
+        if (touchCount == 1 && isFreeZone)
         {
             rightInput = true;
         }
@@ -33,8 +48,8 @@ public class PlayerInputForCamera : MonoBehaviour
             rightInput = false;
         }
     }
-    public bool IsTouchOverUI(int fingerId)
+    public bool IsTouchOverUI(int _fingerId)
     {
-        return EventSystem.current.IsPointerOverGameObject(fingerId);
+        return EventSystem.current.IsPointerOverGameObject(_fingerId);
     }
 }

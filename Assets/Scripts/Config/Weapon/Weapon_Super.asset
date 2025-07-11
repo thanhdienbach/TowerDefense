@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6bca7a14f1cea478bd83ae56e91894, type: 3}
   m_Name: Weapon_Super
   m_EditorClassIdentifier: 
-  Name: Player_EMP
-  damage: 1
+  damage: 2
   amountOfBullet: 20
-  bullet: {fileID: 565067924095635864, guid: fc13c81cae288aa4fa0d4757aef9cc53, type: 3}
+  bullet: {fileID: 2989000923634411228, guid: 67c5448cc031c5c43981ccd87455768f, type: 3}
   detectRange: 20
-  attackStep: 1
+  attackStep: 2
+  bulletSpeed: 20
+  isNeedUpgradeTargetPosition: 1
   timeWillRecallBullet: 4

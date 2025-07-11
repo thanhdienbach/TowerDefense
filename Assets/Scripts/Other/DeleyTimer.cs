@@ -4,7 +4,7 @@ using UnityEngine;
 
 public struct DeleyTimer 
 {
-    private float nextTimeCanDoSomeThing;
+    public float nextTimeCanDoSomeThing;
 
     public bool IsReady()
     {

@@ -9,34 +9,47 @@ public class Bullet : MonoBehaviour
     public WeaponConfig weaponConfig;
 
     public bool isMoving;
-    public Transform bestTarget;
+    public Transform dynamicBestTarget;
+    public Transform staticBestTarget;
+    public Vector3 direction;
+    public bool hasDirection;
 
-    public float bulletSpeed = 20;
     public float raycashDistanceOfset = 1.5f;
 
     public TargetFilterData bulletFilterData;
     public Health targetHealth;
     public bool collided;
 
-    public Transform lastPosition;
+    bool isMainHall;
+
+    public BulletEffect bulletEffect;
+    public bool playedBulletEffect;
 
     private void OnEnable()
     {
         timer.SetDeley(weaponConfig.timeWillRecallBullet);
+        bulletEffect = GetComponent<BulletEffect>();
+        playedBulletEffect = false;
+        hasDirection = false;
     }
     void Update()
     {
         RecallBullet();
+        
         if (isMoving)
         {
-            if (bestTarget == null)
+            if (dynamicBestTarget != null)
             {
-                // MoveBullet();
-                gameObject.SetActive(false);
+                MoveBulletFollowBestTarget(dynamicBestTarget.position);
+            }
+            else if (staticBestTarget != null)
+            {
+                MoveBulletByDirection(staticBestTarget.position);
             }
             else
             {
-                MoveBulletFollowBestTarget(bestTarget);
+                hasDirection = false;
+                gameObject.SetActive(false);
             }
         }
         CheckCollide();
@@ -53,24 +66,38 @@ public class Bullet : MonoBehaviour
             CallBullet();
         }
     }
-    public void MoveBulletFollowBestTarget(Transform bestTarget)
+    public void MoveBulletFollowBestTarget(Vector3 _dynamicBestTarget)
     {
-        transform.position = Vector3.MoveTowards(transform.position, bestTarget.position, bulletSpeed * Time.deltaTime);
-        transform.LookAt(bestTarget.position);
+        if (!playedBulletEffect)
+        {
+            bulletEffect.ShootBulletEffect();
+            playedBulletEffect = true;
+        }
+        transform.LookAt(_dynamicBestTarget);
+        transform.position = Vector3.MoveTowards(transform.position, _dynamicBestTarget, weaponConfig.bulletSpeed * Time.deltaTime);
+        direction = (_dynamicBestTarget - transform.position).normalized;
     }
-    public void MoveBullet()
+    public void MoveBulletByDirection(Vector3 _staticBestTarget)
     {
-        transform.Translate(transform.forward * bulletSpeed * Time.deltaTime);
-        
+        if (!playedBulletEffect)
+        {
+            bulletEffect.ShootBulletEffect();
+            playedBulletEffect = true;
+        }
+        if (!hasDirection)
+        {
+            staticBestTarget.position = new Vector3(staticBestTarget.position.x, staticBestTarget.position.y, staticBestTarget.position.z);
+            direction = (_staticBestTarget - transform.position).normalized;
+            hasDirection = true;
+        }
+        transform.position += direction * weaponConfig.bulletSpeed * Time.deltaTime;
     }
     void CheckCollide()
     {
-        float distance = bulletSpeed * raycashDistanceOfset * Time.deltaTime;
-        Vector3 direction = transform.forward;
+        float distance = weaponConfig.bulletSpeed * raycashDistanceOfset * Time.deltaTime;
 
         Ray ray = new Ray(transform.position, direction);
         RaycastHit hit;
-
 
         if (Physics.Raycast(ray, out hit, distance))
         {
@@ -80,15 +107,26 @@ public class Bullet : MonoBehaviour
                 CallBullet();
                 return;
             }
+            else if (competitorFilterData.unitType == UnitType.Player_MainHall && this.bulletFilterData.unitType != UnitType.Player_MainHall)
+            {
+                isMainHall = true;
+            }
             targetHealth = hit.collider.gameObject.GetComponent<Health>();
             collided = competitorFilterData.teamId != bulletFilterData.teamId;
         }
+
+        Debug.DrawRay(ray.origin, ray.direction, Color.green);
+        
     }
     void HandleCollide()
     {
-        CallBullet();
+        bulletEffect.BulletHitEffect(this.transform);
         TakeDame(weaponConfig.damage);
-        targetHealth.CheckCurrentHealth();
+        if (targetHealth.curentHealth <= 0)
+        {
+            bulletEffect.DestroyEffect(this.transform);
+        }
+        CallBullet();
     }
     void CallBullet()
     {
@@ -98,5 +136,10 @@ public class Bullet : MonoBehaviour
     void TakeDame(float value)
     {
         targetHealth.curentHealth -= value;
+        targetHealth.CheckCurrentHealth();
+        if (isMainHall && targetHealth.curentHealth > 0)
+        {
+            PlayingPanle.instance.ShowInfoToUI(PlayingPanle.instance.mainHallCurrentHealth_Text, MainHall.instance.myHealth.curentHealth.ToString());
+        }
     }
 }

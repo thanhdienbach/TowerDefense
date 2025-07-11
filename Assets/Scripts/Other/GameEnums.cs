@@ -10,6 +10,7 @@ public enum UnitType
     Player_Lazer,
     Player_Turret,
     Player_Power,
+    Player_Energy,
     Enemy_Helicoptor,
     Enemy_Buggy,
     Enemy_Boss,

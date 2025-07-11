@@ -6,30 +6,34 @@ public class GameStateMachine : MonoBehaviour
 {
 
     #region Instance
-    public static GameStateMachine Instance;
+    public static GameStateMachine instance;
     private void OnEnable()
     {
-        Instance = this;
-    }
-    private void OnDisable()
-    {
-        Instance = null;
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
+    public GameState mainMenuState;
     public GameState pauseState;
     public GameState playingState;
     public GameState gameOverState;
     public GameState winPlayScene;
     public GameState currentState;
-    void Start()
+    void Awake()
     {
         CreatValueState();
-        currentState = pauseState;
+        currentState = mainMenuState;
         currentState.Enter();
     }
     void CreatValueState()
     {
+        mainMenuState = new MainMenuState();
         pauseState = new PauseState();
         playingState = new PlayingState();
         gameOverState = new GameOverState();
@@ -39,10 +43,10 @@ public class GameStateMachine : MonoBehaviour
     {
         currentState.Update();
     }
-    public void ChangeState(GameState newState)
+    public void ChangeState(GameState _newState)
     {
         currentState.Exit();
-        currentState = newState;
+        currentState = _newState;
         currentState.Enter();
     }
 }

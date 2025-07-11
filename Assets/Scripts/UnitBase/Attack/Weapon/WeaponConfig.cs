@@ -10,5 +10,7 @@ public class WeaponConfig : ScriptableObject
     public GameObject bullet;
     public float detectRange;
     public float attackStep;
+    public float bulletSpeed;
+    public bool isNeedUpgradeTargetPosition;
     public float timeWillRecallBullet;
 }

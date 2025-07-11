@@ -17,7 +17,6 @@ public class Enemy : UnitBase
     public bool destinationSet = false;
 
     [Header("Other variable of enemy")]
-    public float rarity;
     public DeleyTimer timer;
 
     void Start()
@@ -31,13 +30,15 @@ public class Enemy : UnitBase
         attack.Init();
         teamID.Init(enemyConfig);
 
-        rarity = enemyConfig.rarity;
-        agent.speed = enemyConfig.speed;
+        agent.speed = enemyConfig.moveSpeed;
         timer.SetDeley(float.MaxValue);
     }
     void Update()
     {
-        EnemyAI();
+        if (GameStateMachine.instance.currentState == GameStateMachine.instance.playingState)
+        {
+            EnemyAI();
+        }
     }
     private void OnDisable()
     {
@@ -54,7 +55,7 @@ public class Enemy : UnitBase
         if (enemyConfig.attackRange > agent.remainingDistance & timer.IsReady())
         {
             agent.isStopped = true;
-            attack.Attacking(attack.currentWeapon);
+            attack.Attacking(attack.currentWeapons);
             transform.LookAt(destination);
         }
     }

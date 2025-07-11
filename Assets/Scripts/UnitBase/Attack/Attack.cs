@@ -9,10 +9,10 @@ public class Attack : MonoBehaviour
 {
     
     public List<Weapon> weapons = new List<Weapon>();
-    public Weapon currentWeapon;
+    public Weapon[] currentWeapons;
 
     public TypeOfTarget typeOfTarget;
-    public TargetFilterData teamID;
+    public TargetFilterData targetFilterData;
     public TeamId targetToTeam;
     public UnitType targetToUnitType;
     public Transform focusPosition;
@@ -26,12 +26,14 @@ public class Attack : MonoBehaviour
     public Transform bestTarget;
     public LookAtTarget lookAtTarget;
 
-    
+    public LineRenderer lazerLineRenderer;
+
+
     public void Init()
     {
         LoadAllWeapon();
-        currentWeapon = GetComponentInChildren<Weapon>();
-        teamID = GetComponentInChildren<TargetFilterData>();
+        currentWeapons = GetComponentsInChildren<Weapon>();
+        targetFilterData = GetComponentInChildren<TargetFilterData>();
         focusPosition = this.transform;
         lookAtTarget = GetComponentInChildren<LookAtTarget>();
     }
@@ -43,25 +45,27 @@ public class Attack : MonoBehaviour
             weapons.Add(weapon);
         }
     }
-    void EquipWeapon(WeaponConfig weaponConfig)
-    {
-        currentWeapon = GetComponentInChildren<Weapon>();
-    }
-    void ChangeWeapon(Weapon weapon)
-    {
-        currentWeapon = weapon;
-    }
 
     void Start()
     {
         conditionTarget = ConditionTarget.Nearest;
+        if (targetFilterData.unitType == UnitType.Player_Lazer)
+        {
+            lazerLineRenderer = GetComponent<LineRenderer>();
+            DrawnLazerLine();
+        }
+        else
+        {
+            lazerLineRenderer = null;
+        }
+        
     }
 
     void Update()
     {
-        Attacking(currentWeapon);
+        Attacking(currentWeapons);
     }
-    public void Attacking(Weapon weapon)
+    public void Attacking(Weapon[] weapons)
     {
         if (findNewTargetTimer.IsReady())
         {
@@ -70,16 +74,52 @@ public class Attack : MonoBehaviour
         }
         if (bestTarget != null)
         {
-            weapon.ShootBullet(bestTarget);
             if (lookAtTarget != null)
             {
                 lookAtTarget.LookToTarget(bestTarget);
             }
+
+            foreach(var weapon in weapons)
+            {
+                weapon.ShootBullet(bestTarget);
+            }
+        }
+        if (targetFilterData.unitType == UnitType.Player_Lazer && bestTarget != null)
+        {
+            DrawnLazerLine();
+        }
+        else if (targetFilterData.unitType == UnitType.Player_Lazer && bestTarget == null)
+        {
+            lazerLineRenderer.SetPosition(1, weapons[0].bulletSlot.position);
+        }
+    }
+    void DrawnLazerLine()
+    {
+        Weapon weapon = GetComponentInChildren<Weapon>();
+
+        lazerLineRenderer.startColor = Color.white;
+        lazerLineRenderer.endColor = Random.ColorHSV();
+
+        lazerLineRenderer.positionCount = 2;
+
+        lazerLineRenderer.SetPosition(0, weapon.bulletSlot.position);
+        if (bestTarget == null)
+        {
+            lazerLineRenderer.SetPosition(1, weapon.bulletSlot.position);
+            return;
+        }
+        if (weapon.nextTimeCanAttack.nextTimeCanDoSomeThing < Time.time + 1)
+        {
+            lazerLineRenderer.SetPosition(1, bestTarget.position);
+        }
+        else
+        {
+            lazerLineRenderer.SetPosition(1, weapon.bulletSlot.position);
         }
     }
     void FindTargetWithCondition(Collider[] targetsInRange, ConditionTarget conditionTarget)
     {
-        targetsInRange = Physics.OverlapSphere(transform.position, currentWeapon.weaponConfig.detectRange, targetLayer);
+        targetsInRange = Physics.OverlapSphere(transform.position, currentWeapons[0].weaponConfig.detectRange, targetLayer);
         if (targetsInRange.Length == 0)
         {
             bestTarget = null;
@@ -149,45 +189,7 @@ public class Attack : MonoBehaviour
             }
         }
     }
-    //void FindNearestTargetByUnitType(Collider[] targetsInRange, UnitType unitType)
-    //{
-    //    float closestDistance = Mathf.Infinity;
-    //    foreach (Collider targetInRange in targetsInRange)
-    //    {
-    //        float distance = Vector3.Distance(transform.position, targetInRange.transform.position);
-    //        if (distance < closestDistance && targetInRange.GetComponent<TeamID>().unitType == unitType)
-    //        {
-    //            distance = closestDistance;
-    //            bestTarget = targetInRange.transform;
-    //        }
-    //    }
-    //}
-    //void FindNearestTargetByTeam(Collider[] targetsInRange, TypeOfTarget typeOfTarget)
-    //{
-    //    float closestDistance = Mathf.Infinity;
-    //    foreach (Collider targetInRange in targetsInRange)
-    //    {
-    //        float distance = Vector3.Distance(transform.position, targetInRange.transform.position);
-    //        if (typeOfTarget == TypeOfTarget.All)
-    //        {
-    //            //
-    //            if (distance < closestDistance)
-    //            {
-    //                distance = closestDistance;
-    //                bestTarget = targetInRange.transform;
-    //            }
-    //        }
-    //        else if (typeOfTarget == TypeOfTarget.AllCompetitor)
-    //        {
-    //            //
-    //            if (distance < closestDistance && targetInRange.GetComponent<TeamID>().team == targetToTeam)
-    //            {
-    //                distance = closestDistance;
-    //                bestTarget = targetInRange.transform;
-    //            }
-    //        }
-    //    }
-    //}
+
     void FindNearestStructerTargetByUnitType(Collider[] targetsInRange, UnitType targetUnitType, Transform transform)
     {
         float closestDistance = Mathf.Infinity;
@@ -237,11 +239,11 @@ public class Attack : MonoBehaviour
         }
         else if (typeOfTarget == TypeOfTarget.AllCompetitor)
         {
-            if (teamID.teamId == TeamId.Player)
+            if (targetFilterData.teamId == TeamId.Player)
             {
                 targetToTeam = TeamId.Enemy;
             }
-            else if (teamID.teamId == TeamId.Enemy)
+            else if (targetFilterData.teamId == TeamId.Enemy)
             {
                 targetToTeam = TeamId.Player;
             }

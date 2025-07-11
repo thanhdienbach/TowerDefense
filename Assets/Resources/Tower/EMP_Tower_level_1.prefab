@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7114689236249433628}
   m_Father: {fileID: 4314916961445785574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7069649068026292917
@@ -48,6 +49,7 @@ MonoBehaviour:
   weaponConfig: {fileID: 11400000, guid: 2e5ac297b7b24a244ac1a633c51ff27a, type: 2}
   bulletPool: {fileID: 0}
   weaponFilterData: {fileID: 0}
+  bulletSlot: {fileID: 7114689236249433628}
 --- !u!114 &9147989857709502364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +64,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: []
   pooledBullet: []
+--- !u!1 &5868694734147895639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7114689236249433628}
+  m_Layer: 19
+  m_Name: BulletSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7114689236249433628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868694734147895639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5152130750087877881}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4314916961446180196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,15 +125,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b665f727f980d441bb9aefcd169f872f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b665f727f980d441bb9aefcd169f872f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b665f727f980d441bb9aefcd169f872f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b665f727f980d441bb9aefcd169f872f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -244,9 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
-  currentWeapon: {fileID: 0}
+  currentWeapons: []
   typeOfTarget: 1
-  teamID: {fileID: 0}
+  targetFilterData: {fileID: 0}
   targetToTeam: 0
   targetToUnitType: 0
   focusPosition: {fileID: 0}
@@ -258,6 +291,7 @@ MonoBehaviour:
   targetsInRange: []
   bestTarget: {fileID: 0}
   lookAtTarget: {fileID: 0}
+  lazerLineRenderer: {fileID: 0}
 --- !u!114 &384287533563695557
 MonoBehaviour:
   m_ObjectHideFlags: 0
